@@ -1,0 +1,76 @@
+.header-block{
+    background-color:var(--thirty-color);
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    color: var(--secondary-color);
+    font-family:var(--primary-font);
+    font-size:var(--primary-size);
+    padding: 0.2em 0 0.2em 0;
+    align-items:center
+}
+
+.info-block {
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+}
+
+.phone-number {
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
+.working-hours {
+    list-style: none;
+    margin-left:0.5em;
+}
+
+.working-hours-icon{
+    margin-left:1em;
+}
+
+.image-logo{
+    width: 5em;
+    height: 5em;
+}
+
+.search-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0 5px;
+  background-color: white;
+  position: relative;
+}
+
+.search-input input {
+  border: none;
+  flex: 1;
+  padding: 8px;
+  padding-right: 25px; 
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  opacity: 0.7;
+  transform: translateY(-50%);
+}
+
+.search-block{
+    opacity: 0.9;
+}
+
+.search-input input:hover,
+.search-input input:focus {
+  outline: none; 
+   box-shadow: 0px 0.2em 0px 0px rgba(0, 0, 0, 0.2); 
+}
+
+.search-icon:hover,
+.search-icon:focus{
+  opacity: 1;
+}

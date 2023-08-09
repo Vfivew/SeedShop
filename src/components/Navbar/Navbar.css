@@ -1,0 +1,33 @@
+.Navbar {
+  font-family: var(--primary-font);
+  font-family: var(--secondary-size);
+  width: 100%;
+  height: 6%;
+  background-color: var(--primary-color);
+  display: flex;
+  align-items: center; 
+}
+
+.nav-list {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around; 
+  
+}
+
+.nav_list_link{
+  width: 25%;
+  text-align: center;
+  height: auto;
+  color: var(--thirty-color);
+  text-decoration: none;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+
+.nav_list_link:hover,
+.nav_list_link:focus{
+  background-color: #7dbd57;
+}
