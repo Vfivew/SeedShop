@@ -1,0 +1,92 @@
+import React from 'react';
+import {
+  toggleFilterHit,
+  toggleFilterNew,
+  toggleFilterDiscount,
+  setSeedProducerFilter,
+  setSeedFilters,
+} from '../../reducers/SeedProductReducer';
+
+const Filters = ({
+  seedFilters,
+  dispatch,
+  uniqueProducers,
+  uniqueVegetableTypes,
+}) => {
+  const handleVegetableTypeToggle = (vegetableType) => {
+    const updatedselectedProductTypes = seedFilters.selectedProductTypes.includes(vegetableType)
+      ? seedFilters.selectedProductTypes.filter((v) => v !== vegetableType)
+      : [...seedFilters.selectedProductTypes, vegetableType];
+
+    dispatch(
+      setSeedFilters({
+        ...seedFilters,
+        selectedProductTypes: updatedselectedProductTypes,
+      })
+    );
+  };
+
+  return (
+    <div className="filters">
+      <h3 className='filters-title'>Насіння овочів</h3>
+      <div className='vegetable-list-filter'>
+        <label className={`filter ${seedFilters.hit ? 'active' : ''}`}>
+          <input
+            className='vegetable-list-filter-cheakbox'
+            type="checkbox"
+            checked={seedFilters.hit}
+            onChange={() => dispatch(toggleFilterHit())}
+          />
+          Хіт
+        </label>
+        <label className={`filter ${seedFilters.new ? 'active' : ''}`}>
+          <input
+            className='vegetable-list-filter-cheakbox'
+            type="checkbox"
+            checked={seedFilters.new}
+            onChange={() => dispatch(toggleFilterNew())}
+          />
+          Новинка
+        </label>
+        <label className={`filter ${seedFilters.discount ? 'active' : ''}`}>
+          <input
+            className='vegetable-list-filter-cheakbox'
+            type="checkbox"
+            checked={seedFilters.discount}
+            onChange={() => dispatch(toggleFilterDiscount())}
+          />
+          Знижка
+        </label>
+      </div>
+
+      <h3 className='filters-title'>Вид культури</h3>
+      <div className='vegetable-list-filter'>
+        {uniqueVegetableTypes.map((vegetableType, index) => (
+          <label className='vegetable-list-filter-item' key={index}>
+            <input
+              type="checkbox"
+              className='vegetable-list-filter-cheakbox'
+              checked={seedFilters.selectedProductTypes.includes(vegetableType)}
+              onChange={() => handleVegetableTypeToggle(vegetableType)}
+            />
+            {vegetableType}
+          </label>
+        ))}
+      </div>
+      
+      <select
+        className='select-filter'
+        onChange={(e) => dispatch(setSeedProducerFilter(e.target.value))}
+      >
+        <option value="">Оберіть виробника</option>
+        {uniqueProducers.map((producer, index) => (
+          <option key={index} value={producer}>
+            {producer}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
+
+export default Filters;

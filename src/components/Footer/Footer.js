@@ -22,8 +22,8 @@ const Footer = () => {
                     <NavLink to="/seedvegetable" className='nav_list_link'>
                     Насіння овочів
                     </NavLink>
-                    <NavLink to="/seedfruit" className='nav_list_link'>
-                    Насіння фруктів
+                    <NavLink to="/seedberries" className='nav_list_link'>
+                    Насіння ягід
                     </NavLink> 
                     <NavLink to="/othergoods" className='nav_list_link'>
                     Інші товари 
@@ -32,16 +32,16 @@ const Footer = () => {
                 <ul className='footer-client-info'>
                     <h3>Клієнтам:</h3>
                     <NavLink to="/authorization" className='nav_list_link'>
-                    Вхід
+                        Вхід
                     </NavLink>
-                    <NavLink to="/contact" className='nav_list_link'>
-                    Контакти
+                    <NavLink to="/tabs/contact" className='nav_list_link'>
+                        Контакти
                     </NavLink>
-                    <NavLink to="/aboutsus" className='nav_list_link'>
-                    Про нас 
+                    <NavLink to="/tabs/aboutsus" className='nav_list_link'>
+                        Про нас 
                     </NavLink>
-                    <NavLink to="/paymentanddeliver" className='nav_list_link'>
-                    Оплата та доставка
+                    <NavLink to="/tabs/paymentdeliver" className='nav_list_link'>
+                        Оплата та доставка
                     </NavLink>
                 </ul>
                 <ul className='footer-contact-info'>

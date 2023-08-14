@@ -1,0 +1,25 @@
+.main-image{
+    width: 90%;
+    min-height: 50vh;
+    margin: 2em auto;
+    background-image: url('../../resources/image/main_image.jpg');
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.main-slogan{
+    margin-left: 2em;
+    color: var(--thirty-color);
+}
+
+.product-container{
+  width: 100%;
+  min-height: 20%;
+  margin-bottom: 2em;
+  padding: 2em;
+  background-color:var(--fourth-color);
+}

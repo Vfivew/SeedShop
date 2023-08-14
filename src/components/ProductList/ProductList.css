@@ -1,0 +1,42 @@
+.sort-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.sort-buttons button {
+  font-weight: bold;
+  width: 9em;
+  height: 2.5em;
+  border: none;
+  background-color: transparent;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius:55px;
+}
+
+.sort-buttons button.active {
+  color: rgb(255, 255, 255);
+  background-color:var(--primary-color);
+}
+
+.main-product {
+    background-color:var(--fourth-color);
+}
+.product-list {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  flex-wrap: wrap; 
+  gap: 20px; 
+}
+
+.product-card {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  padding: 2em;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}

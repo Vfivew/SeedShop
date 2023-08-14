@@ -1,0 +1,89 @@
+.product-card {
+  width: 300px;
+  height: 450px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Распределение пространства между картинкой и описанием */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  position: relative;
+  width: 65%;
+  height: 65%; /* 70% от 80% блока */
+  margin: 0 auto; /* Центрирование картинки горизонтально */
+}
+
+.product-details {
+  width: 100%;
+  height: 30%;
+  overflow: hidden;
+  text-align: left;
+  margin-top: 1em; /* Отступ между картинкой и описанием */
+}
+
+.product-details h4 {
+  margin: 0; /* Убираем отступ сверху для заголовка */
+  margin-bottom: 0.7em; /* Отступ снизу для заголовка */
+  font-weight: normal; /* Убираем жирный шрифт у заголовка */
+}
+
+.product-details p {
+  margin-bottom: 0.5em; /* Отступ сверху и снизу для параграфов */
+}
+
+.product-details .price {
+  font-weight: bold; /* Делаем цену жирным шрифтом */
+}
+
+.best-seller {
+  position: absolute;
+  bottom: -0.9em;
+  left: -4em;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  width: auto;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  border-radius: 10px;
+  padding: 10px 10px;
+}
+
+.new{
+   position: absolute;
+  bottom: -0.9em;
+  left: -4em;
+  background-color: rgb(0, 68, 255);
+  color: white;
+  font-weight: bold;
+  width: auto;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  border-radius: 10px;
+  padding: 10px 10px;
+}
+
+.discount{
+  position: absolute;
+  bottom: -0.9em;
+  left: -4em;
+  background-color: rgb(75, 252, 90);
+  color: white;
+  font-weight: bold;
+  width: auto;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  border-radius: 10px;
+  padding: 10px 10px;
+}
