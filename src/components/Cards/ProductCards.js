@@ -1,5 +1,5 @@
 import React from 'react';
-import './ProductCards.css'; // Подключение стилей для компонента
+import './ProductCards.css'; 
 
 function ProductCard({ product }) {
   const availabilityText = product.quantityAvailable > 0 ? 'В наявності' : 'Немає в наявності';

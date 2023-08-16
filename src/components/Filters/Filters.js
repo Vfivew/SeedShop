@@ -11,12 +11,13 @@ const Filters = ({
   seedFilters,
   dispatch,
   uniqueProducers,
-  uniqueVegetableTypes,
+  uniqueProductTypes,
 }) => {
-  const handleVegetableTypeToggle = (vegetableType) => {
-    const updatedselectedProductTypes = seedFilters.selectedProductTypes.includes(vegetableType)
-      ? seedFilters.selectedProductTypes.filter((v) => v !== vegetableType)
-      : [...seedFilters.selectedProductTypes, vegetableType];
+    const handleProductTypeToggle = (productType) => {
+      console.log(seedFilters.selectedProductTypes)
+    const updatedselectedProductTypes = seedFilters.selectedProductTypes.includes(productType)
+      ? seedFilters.selectedProductTypes.filter((v) => v !== productType)
+      : [...seedFilters.selectedProductTypes, productType];
 
     dispatch(
       setSeedFilters({
@@ -29,10 +30,10 @@ const Filters = ({
   return (
     <div className="filters">
       <h3 className='filters-title'>Насіння овочів</h3>
-      <div className='vegetable-list-filter'>
+      <div className='seed-list-filter'>
         <label className={`filter ${seedFilters.hit ? 'active' : ''}`}>
           <input
-            className='vegetable-list-filter-cheakbox'
+            className='seed-list-filter-cheakbox'
             type="checkbox"
             checked={seedFilters.hit}
             onChange={() => dispatch(toggleFilterHit())}
@@ -41,7 +42,7 @@ const Filters = ({
         </label>
         <label className={`filter ${seedFilters.new ? 'active' : ''}`}>
           <input
-            className='vegetable-list-filter-cheakbox'
+            className='seed-list-filter-cheakbox'
             type="checkbox"
             checked={seedFilters.new}
             onChange={() => dispatch(toggleFilterNew())}
@@ -50,7 +51,7 @@ const Filters = ({
         </label>
         <label className={`filter ${seedFilters.discount ? 'active' : ''}`}>
           <input
-            className='vegetable-list-filter-cheakbox'
+            className='seed-list-filter-cheakbox'
             type="checkbox"
             checked={seedFilters.discount}
             onChange={() => dispatch(toggleFilterDiscount())}
@@ -60,16 +61,16 @@ const Filters = ({
       </div>
 
       <h3 className='filters-title'>Вид культури</h3>
-      <div className='vegetable-list-filter'>
-        {uniqueVegetableTypes.map((vegetableType, index) => (
-          <label className='vegetable-list-filter-item' key={index}>
+      <div className='seed-list-filter'>
+        {uniqueProductTypes.map((productType, index) => (
+          <label className='seed-list-filter-item' key={index}>
             <input
               type="checkbox"
-              className='vegetable-list-filter-cheakbox'
-              checked={seedFilters.selectedProductTypes.includes(vegetableType)}
-              onChange={() => handleVegetableTypeToggle(vegetableType)}
+              className='seed-list-filter-cheakbox'
+              checked={seedFilters.selectedProductTypes.includes(productType)}
+              onChange={() => handleProductTypeToggle(productType)}
             />
-            {vegetableType}
+            {productType}
           </label>
         ))}
       </div>

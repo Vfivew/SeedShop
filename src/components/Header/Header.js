@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Logo from '../../resources/image/Logo.png';
+import Basket from '../Basket/Basket';
 
 import './Header.css';
 
 const Header = () => {
+
+    const [basketOpen, setBasketOpen] = useState(false);
+
+    const toggleBasket = () => {
+        setBasketOpen(!basketOpen);
+    };
+
     return (
         <header className='header-block'>
             <div className='logo-block'>
@@ -28,7 +36,8 @@ const Header = () => {
                 </div>
             </div>
             <div className='basket-block'>
-               <span>Корзина</span>
+                <Icon icon="fluent-emoji-high-contrast:basket" width="40" height="40" onClick={toggleBasket} />
+                {basketOpen && <Basket onClose={toggleBasket} />}
             </div>
         </header>
     );

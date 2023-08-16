@@ -15,9 +15,15 @@ const SET_SEED_SORT = 'SET_SEED_SORT';
 const TOGGLE_FILTER_HIT = 'TOGGLE_FILTER_HIT';
 const TOGGLE_FILTER_NEW = 'TOGGLE_FILTER_NEW';
 const TOGGLE_FILTER_DISCOUNT = 'TOGGLE_FILTER_DISCOUNT';
+const RESET_SEED_FILTERS = 'RESET_SEED_FILTERS'
 
-const seedVegetableReducer = (state = initialState, action) => {
+const seedProductReducer = (state = initialState, action) => {
   switch (action.type) {
+    case RESET_SEED_FILTERS:
+      return {
+        ...state,
+        filters: initialState.filters,
+      };
     case SET_SEED_FILTERS:
       console.log('1')
       return {
@@ -95,4 +101,8 @@ export const toggleFilterDiscount = () => {
   return { type: TOGGLE_FILTER_DISCOUNT };
 };
 
-export default seedVegetableReducer;
+export const resetSeedFilters = () => {
+  return { type: RESET_SEED_FILTERS };
+};
+
+export default seedProductReducer;

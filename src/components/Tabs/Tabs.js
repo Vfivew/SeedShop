@@ -1,24 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import './Tabs.css';
 
-const Tabs = ({ activeTabId }) => {
-  const tabsData = [
-    { id: 1, title: 'Контакти', content: 'Описание раздела "Контакти"' },
-    { id: 2, title: 'Про нас', content: 'Описание раздела "Про нас"' },
-    { id: 3, title: 'Доставка і оплата', content: 'Описание раздела "Доставка і оплата"' },
-  ];
-
+const Tabs = ({ tabsData, activeTabId }) => {
   const [activeTab, setActiveTab] = useState(
     tabsData.find(tab => tab.id === activeTabId) || tabsData[0]
   );
 
-    useEffect(() => {
-      console.log('render')
+  useEffect(() => {
+    console.log('++')
     const tabToUpdate = tabsData.find(tab => tab.id === activeTabId);
     if (tabToUpdate) {
       setActiveTab(tabToUpdate);
     }
-  }, [activeTabId]);
+  }, [activeTabId,tabsData]);/// tabsData можно видалити
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);

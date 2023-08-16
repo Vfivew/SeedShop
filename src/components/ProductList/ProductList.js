@@ -3,12 +3,15 @@ import useFetchData from '../../hook/useFetchData';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductCard from '../Cards/ProductCards';
 import { setSortBy } from '../../reducers/productsReducer';
+import { Link } from 'react-router-dom';
+import { useProduct } from '../../context/contexts';
 import './ProductList.css';
 
 function ProductList() {
   const dispatch = useDispatch();
   const { data: products, loading, error } = useFetchData('https://raw.githubusercontent.com/Vfivew/DataSeedShop/main/data.json');
   const sortBy = useSelector(state => state.products.sortBy);
+  const { setSelectedProduct } = useProduct();
 
   const [activeButton, setActiveButton] = useState('sold');
 
@@ -60,8 +63,14 @@ function ProductList() {
       </div>
       <div className="product-list">
         {sortedAndFilteredProducts.map(product => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+          <Link
+          key={product.id}
+          to={`/product/${product.id}`}
+          onClick={() => setSelectedProduct(product)}
+          >
+              <ProductCard product={product} />
+          </Link>
+          ))}
       </div>
     </div>
   );

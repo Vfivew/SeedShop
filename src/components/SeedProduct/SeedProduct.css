@@ -2,7 +2,7 @@
     width: 85%;
     margin-left: 2em;
 }
-.vegetable-product{
+.seed-product{
     display: flex;
     padding: 1em 1em;
     background-color: var(--fourth-color)
@@ -15,7 +15,7 @@
     background-color:white;
 }
 
-.vegetable-list{
+.seed-list{
   display: flex;
   justify-content: left; 
   align-items: center; 
@@ -23,12 +23,12 @@
   gap: 20px; 
 }
 
-.vegetable-list-filter{
+.seed-list-filter{
     display: flex;
     flex-direction: column;
 }
 
-.vegetable-list-filter-cheakbox{
+.seed-list-filter-cheakbox{
     margin: 0 0.5em 0 0.5em;
 }
 

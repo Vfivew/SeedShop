@@ -1,0 +1,34 @@
+.basket-item-pay-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.basket-item-pay-info-image{
+    width: 10%;
+    height: 15%;
+}
+
+.basket-item-pay-info-name{
+    width: 35%;
+}
+
+.basket-item-pay-info-quantity{
+    width: 15%;
+}
+
+.basket-item-pay-info-quantity-input{
+    max-width: 50%;
+}
+
+.basket-item-pay-info-price{
+    width: 15%;
+}
+
+.basket-item-pay-info .icon {
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+}
+

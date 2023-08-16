@@ -10,7 +10,7 @@ const Navbar = () => {
         <NavLink to="/seedvegetable" className='nav_list_link'>
           Насіння овочів
         </NavLink>
-        <NavLink to="/seedfruit" className='nav_list_link'>
+        <NavLink to="/seedberries" className='nav_list_link'>
           Насіння ягід
         </NavLink> 
         <NavLink to="/othergoods" className='nav_list_link'>

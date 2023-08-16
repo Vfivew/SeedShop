@@ -1,0 +1,44 @@
+.form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-block {
+    width: 50%;
+    background-color: var(--thirty-color);
+    margin: 1em 1em 1em 1em;
+    padding: 1em; 
+}
+
+.form-block label {
+    display: block;
+    margin-bottom: 0.5em; 
+}
+
+.form-block input,
+.form-block select {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    outline: none;
+    transition: border-color 0.3s; 
+}
+
+.form-block input:focus,
+.form-block select:focus {
+    border-color: var(--primary-color); 
+}
+
+.form-basket-items {
+    width: 50%;
+}
+
+.form-basket-items-list {
+    width: 95%;
+    margin: 1em 0 1em 1em;
+    padding: 1em 0 1em 0.5em;
+    background-color: var(--thirty-color);
+    list-style: none;
+}

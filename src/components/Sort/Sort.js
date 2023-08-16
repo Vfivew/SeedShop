@@ -1,15 +1,15 @@
 import React from 'react';
 
-const Sort = ({ activeSort, handleSortClick, sortedAndFilteredProducts }) => {
+const Sort = ({ activeSort, handleSortClick, sortedProducts }) => {
   const handleSort = (sortMethod) => {
     if (sortMethod === 'cheap') {
-      sortedAndFilteredProducts.sort((a, b) => a.price - b.price);
+      sortedProducts.sort((a, b) => a.price - b.price);
     } else if (sortMethod === 'expensive') {
-      sortedAndFilteredProducts.sort((a, b) => b.price - a.price);
+      sortedProducts.sort((a, b) => b.price - a.price);
     } else if (sortMethod === 'popular') {
-      sortedAndFilteredProducts.sort((a, b) => b.sold - a.sold);
+      sortedProducts.sort((a, b) => b.sold - a.sold);
     } else if (sortMethod === 'name') {
-      sortedAndFilteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+      sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
     }
     handleSortClick(sortMethod);
   };
