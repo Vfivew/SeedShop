@@ -1,4 +1,5 @@
 .basket-item-pay-info{
+    font-size: var(--primary-size);
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -24,6 +25,7 @@
 
 .basket-item-pay-info-price{
     width: 15%;
+    font-weight: bold;
 }
 
 .basket-item-pay-info .icon {

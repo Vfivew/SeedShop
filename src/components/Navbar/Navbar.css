@@ -1,6 +1,6 @@
 .Navbar {
   font-family: var(--primary-font);
-  font-family: var(--secondary-size);
+  font-size: var(--primary-size);
   width: 100%;
   min-height: 6%;
   background-color: var(--primary-color);
@@ -29,5 +29,22 @@
 
 .nav_list_link:hover,
 .nav_list_link:focus{
+  background-color: #7dbd57;
+}
+
+.button-style {
+  font-size: var(--primary-size);
+  background-color: var(--primary-color);
+  color: var(--thirty-color);
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button-style:hover {
   background-color: #7dbd57;
 }

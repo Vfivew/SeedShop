@@ -16,7 +16,7 @@ const Sort = ({ activeSort, handleSortClick, sortedProducts }) => {
 
   return (
     <div className='sort'>
-      <h3 className='sort'>Сортування за:</h3>
+      <h3 className='sort-head'>Відсортувати</h3>
       <div className='sort-selection'>
         <button
           type='button'

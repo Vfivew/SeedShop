@@ -9,6 +9,7 @@ import SeedProduct from './components/SeedProduct/SeedProduct';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import { ProductProvider } from './context/contexts';
 import Form from './components/Form/Form';
+import AuthComponent from './components/AuthComponent/AuthComponent';
 
 function App() {
   return (
@@ -22,11 +23,12 @@ function App() {
           <Route path='/seedvegetable'  element={<SeedProduct productTypeFilter="Овочі" />} />
           <Route path='/seedberries' element={<SeedProduct productTypeFilter="Ягоди" />} />
           <Route path='/othergoods' element={<Form/>} />
-          <Route path='/authorization' />
+          <Route path='/authorization' element={<AuthComponent/>} />
           <Route path="/tabs/contact" element={<InfoPage activeTabId={1} />} />
           <Route path="/tabs/aboutsus" element={<InfoPage activeTabId={2} />} />
           <Route path="/tabs/paymentdeliver" element={<InfoPage activeTabId={3} />} />
           <Route path='/product/:productId' element={<ProductDetails />} />
+          <Route path='/form'element={<Form />}  />
           <Route path='*'  />
         </Routes>
       </main>

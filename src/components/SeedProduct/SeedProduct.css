@@ -11,8 +11,10 @@
 .filters{
     height: auto;
     max-height: 500px;
+    width: 15%;
     min-width: 15%;
     background-color:white;
+    font-size: var(--primary-size);
 }
 
 .seed-list{
@@ -53,12 +55,14 @@
     margin: 0 1em 1em 1em;
 }
 
+
 .sort-title{
     font-size: var(--primary-size);
     font-weight: normal;
 }
 
 .sort-selection{
+    height: 3em;
     width: 70%;
     display: flex;
     justify-content: space-around;
@@ -68,14 +72,21 @@
     border-radius:55px;
 }
 
+.sort-head{
+    display: flex;
+    padding-top: 0.3em;
+    margin-right: 1em;
+    align-items:center;
+    text-align: center;
+}
+
 .sort-selection button {
   font-weight: bold;
   width: 25%;
   height: 100%;
-  
   cursor: pointer;
   border-radius:55px;
-  color:var(--primary-color);
+  color:var(--secondary-color);
   background-color: var(--thirty-color);
   border:1px solid var(--primary-color);
 }
@@ -84,4 +95,13 @@
   background-color: var(--primary-color); 
   color:var(--thirty-color);
   border: 1px solid white;
+}
+
+.select-filter {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  font-size: var(--primary-size);
+  color: #333;
+  outline: none;
 }

@@ -1,0 +1,35 @@
+{
+  "users": [
+    {
+      "email": "vorldvlad@yahoo.com",
+      "password": "$2a$10$mw2KuPbGHbLZYb6kOSPAAeHok1KRULFTw.B72fmpetb7XJb6QGXsS",
+      "confirmPassword": "11111111",
+      "id": 1
+    },
+    {
+      "email": "vorld4vlad@yahoo.com",
+      "password": "$2a$10$EieqJFJ77AnXaR8kctqEWuGfoOQaGL.cE8mWbpdIigFQxCBBzVspy",
+      "confirmPassword": "11111111",
+      "id": 2
+    },
+    {
+      "email": "vorld2vlad@yahoo.com",
+      "password": "$2a$10$KWkYwft5zHm.gUzfkGk7YOHvu9b7rYTM/eKKWNQfUFeMopfb2a3Ca",
+      "confirmPassword": "11111111",
+      "id": 3
+    },
+    {
+      "email": "vorldvl2ad@yahoo.com",
+      "password": "$2a$10$YEsrf86tbTQJsC6npbokouy7w38/ccR1okXDtG25phXAY5i4v1p1i",
+      "confirmPassword": "11111111",
+      "id": 4
+    },
+    {
+      "email": "vorldadadvlad@yahoo.com",
+      "password": "$2a$10$mSNMu5xuYbkd0zm87.dnLuSmvVNIz397Wd0er/v7W0baclX3pTMuK",
+      "confirmPassword": "11111111",
+      "id": 5
+    }
+  ],
+  "posts": []
+}

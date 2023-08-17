@@ -6,6 +6,7 @@ import {
   setSeedProducerFilter,
   setSeedFilters,
 } from '../../reducers/SeedProductReducer';
+import './Filters.css';
 
 const Filters = ({
   seedFilters,
@@ -74,7 +75,7 @@ const Filters = ({
           </label>
         ))}
       </div>
-      
+      <h3 className='filters-title'>Виробник</h3>
       <select
         className='select-filter'
         onChange={(e) => dispatch(setSeedProducerFilter(e.target.value))}
