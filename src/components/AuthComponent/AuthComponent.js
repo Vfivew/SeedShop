@@ -4,11 +4,12 @@ import './AuthComponent.css';
 import { useProduct } from '../../context/contexts';
 
 function AuthComponent() {
-  const { isAuthenticated, setIsAuthenticated, setUserEmail, userEmail } = useProduct();
+  const { isAuthenticated, setIsAuthenticated, setUserEmail, userEmail, handleLogout } = useProduct();
 
   const [isRegistering, setIsRegistering] = useState(false);
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
   const [emailAlreadyExists, setEmailAlreadyExists] = useState(false);
+  const [passwordsMatch, setPasswordsMatch] = useState(true); 
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -21,13 +22,6 @@ function AuthComponent() {
       setUserEmail(savedUserEmail);
     }
   }, [setIsAuthenticated, setUserEmail]);
-
-  const handleLogout = () => {
-    localStorage.removeItem('isAuthenticated');
-    localStorage.removeItem('userEmail');
-    setIsAuthenticated(false);
-    setUserEmail('');
-  };
 
   const onSubmit = async (data) => {
     try {
@@ -77,37 +71,74 @@ function AuthComponent() {
             placeholder="Email"
             {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
           />
-          {errors.email && <span>Email is required and must be a valid email address</span>}
+          {errors.email && <span className='valid-error'>Невірний формат пошти</span>}
 
-          <input
-            type="password"
-            placeholder="Password"
-            {...register('password', { required: true, minLength: 8 })}
-          />
-          {errors.password && <span>Password is required and must be at least 8 characters long</span>}
+          {!isRegistering && (
+            <input
+              type="password"
+              placeholder="Password"
+              {...register('password', { required: true, minLength: 8 })}
+            />
+          )}
 
-          {!isRegistering ? (
-            <button type="submit" className="auth-button">Login</button>
-          ) : (
+          {isRegistering && (
             <>
+              <input
+                type="password"
+                placeholder="Password"
+                {...register('password', { required: true, minLength: 8 })}
+                onChange={(e) => {
+                  const confirmPasswordInput = e.target.form.confirmPassword;
+                  setPasswordsMatch(e.target.value === confirmPasswordInput.value);
+                }}
+              />
+              {errors.password && <span className='valid-error'>Пароль має містити не менше 8 символів</span>}
+
               <input
                 type="password"
                 placeholder="Confirm Password"
                 {...register('confirmPassword', { required: true, minLength: 8 })}
+                onChange={(e) => {
+                  const passwordInput = e.target.form.password;
+                  setPasswordsMatch(e.target.value === passwordInput.value);
+                }}
               />
-              {errors.confirmPassword && <span>Password confirmation is required and must be at least 8 characters long</span>}
-              <button type="submit" className="auth-button">Register</button>
+              {errors.confirmPassword && <span className='valid-error'>Пароль має містити не менше 8 символів</span>}
+              {!passwordsMatch && <span className='valid-error'>Паролі не співпадають</span>}
+            </>
+          )}
+
+          {!isRegistering ? (
+            <button type="submit" className="auth-button" >Увійти</button>
+          ) : (
+            <>
+              <button
+                type="submit"
+                className="auth-button"
+                disabled={!passwordsMatch}
+              >
+                Створити аккаунт
+              </button>
               {emailAlreadyExists && (
-                <p>Данный емейл уже зарегистрирован</p>
+                <p className='valid-error'>Дана поштова адреса уже зареєстрована</p>
               )}
               {registrationSuccess && (
-                <p>Вы успешно зарегистрировались, можете зайти в аккаунт</p>
+                <p>Вы успішно зареєструвались, можете увійти в аккаунт</p>
               )}
             </>
           )}
-          <button type="button" onClick={() => setIsRegistering(!isRegistering)} className="auth-button">
-            {isRegistering ? 'Back to Login' : 'Register'}
-          </button>
+            <button
+              type="button"
+              onClick={() => {
+                setIsRegistering(!isRegistering);
+                setRegistrationSuccess(false);
+                setEmailAlreadyExists(false);
+                setPasswordsMatch(true);
+              }}
+              className="auth-button"
+            >
+            {isRegistering ? 'Повернутись до Входу' : 'Реэстрація'}
+            </button>
         </form>
       )}
     </div>

@@ -48,21 +48,18 @@ const Footer = () => {
                     <h3>Контакти:</h3>
                     <li><a className='phone-number' href="tel:380999999999">+099-999-99-99</a></li>
                     <li>
-                        <Icon className='footer-icon' icon="grommet-icons:instagram" color="black" width="16" height="16" />
                         <a href='https://www.instagram.com/' target='_blank' rel='noopener noreferrer'>
-                         Instagram
+                        <Icon className='footer-icon' icon="grommet-icons:instagram" color="black" width="16" height="16" />Instagram
                         </a>
                     </li>
                     <li>
-                        <Icon className='footer-icon' icon="bi:facebook" color="black" width="16" height="16" />
                         <a href='https://www.facebook.com/' target='_blank' rel='noopener noreferrer'>
-                        Facebook
+                        <Icon className='footer-icon' icon="bi:facebook" color="black" width="16" height="16" />Facebook
                         </a>
                     </li>
                     <li>
-                        <Icon className='footer-icon' icon="basil:viber-solid" color="black" width="16" height="16" />
                         <a href='https://chats.viber.com/' target='_blank' rel='noopener noreferrer'>
-                        Viber
+                        <Icon className='footer-icon' icon="basil:viber-solid" color="black" width="16" height="16" />Viber
                         </a>
                     </li>
                 </ul>

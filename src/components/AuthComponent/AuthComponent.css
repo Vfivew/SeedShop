@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
 }
 
 .auth-form {
@@ -13,18 +13,31 @@
 }
 
 .auth-form input {
-  margin: 8px;
-  padding: 8px;
+  font-size: var(--primary-size);
+  margin: 0.5em;
+  padding: 0.5em;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
 .auth-button {
-  margin: 8px;
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
+  font-size: var(--primary-size);
+  margin: 0.5em;
+  padding: 0.5em 1em;
+  background-color: var(--primary-color);
+  color: var(--thirty-color);
+  border: 1px solid #ccc;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.auth-button:hover,
+.auth-button:focus{
+  background-color: var(--thirty-color);
+  color:var(--primary-color);
+}
+
+.valid-error {
+  font-size: var(--primary-size);
+  color:red
 }

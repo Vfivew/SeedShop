@@ -1,13 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import BasketItem from './BasketItem/BasketItem';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import './Basket.css';
 
 const Basket = ({ onClose }) => {
   const cartItems = useSelector(state => state.basket.cartItems);
-  const navigate = useNavigate(); 
-  
+  const navigate = useNavigate();
+
   const totalAmount = cartItems.reduce((total, item) => total + (item.product.price * item.quantity), 0);
   const formattedTotalAmount = `${totalAmount.toLocaleString('en-US')} грн`;
 
@@ -31,7 +31,7 @@ const Basket = ({ onClose }) => {
             <ul className='basket-items-list'>
               {cartItems.map((item, index) => (
                 <li key={index}>
-                  <BasketItem item={item} />
+                  <BasketItem item={item} product={item.product} onClose={onClose} />
                 </li>
               ))}
             </ul>
@@ -45,9 +45,9 @@ const Basket = ({ onClose }) => {
             Повернутись до Замовлення
           </button>
           <button className='basket-items-button' onClick={() => {
-          handleOrderClick();
-          onClose();
-           }}>
+            handleOrderClick();
+            onClose();
+          }}>
             Оформити замовлення
           </button>
         </div>

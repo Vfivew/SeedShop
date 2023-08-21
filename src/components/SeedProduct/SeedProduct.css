@@ -8,15 +8,6 @@
     background-color: var(--fourth-color)
 }
 
-.filters{
-    height: auto;
-    max-height: 500px;
-    width: 15%;
-    min-width: 15%;
-    background-color:white;
-    font-size: var(--primary-size);
-}
-
 .seed-list{
   display: flex;
   justify-content: left; 
@@ -25,83 +16,14 @@
   gap: 20px; 
 }
 
-.seed-list-filter{
-    display: flex;
-    flex-direction: column;
+@media (max-width: 767px) {
+    .product-block {
+        width: 85%;
+        margin-left: 0;
+    }
+    
+    .seed-product{
+        padding: 0.3em 0.3em;
+    }
 }
 
-.seed-list-filter-cheakbox{
-    margin: 0 0.5em 0 0.5em;
-}
-
-.filters-title{
-    margin:0.5em 0 0 0.5em;
-}
-
-
-.select-filter{
-    margin:0.5em 0 0 0.5em ;
-}
-
-.categories{
-    display: flex;
-    justify-content: space-around;
-}
-
-.sort{
-    font-size: var(--primary-size);
-    display: flex;
-    justify-content: right;
-    margin: 0 1em 1em 1em;
-}
-
-
-.sort-title{
-    font-size: var(--primary-size);
-    font-weight: normal;
-}
-
-.sort-selection{
-    height: 3em;
-    width: 70%;
-    display: flex;
-    justify-content: space-around;
-    text-align: right;
-    background-color:var(--thirty-color);
-    border: 2px solid var(--primary-color);
-    border-radius:55px;
-}
-
-.sort-head{
-    display: flex;
-    padding-top: 0.3em;
-    margin-right: 1em;
-    align-items:center;
-    text-align: center;
-}
-
-.sort-selection button {
-  font-weight: bold;
-  width: 25%;
-  height: 100%;
-  cursor: pointer;
-  border-radius:55px;
-  color:var(--secondary-color);
-  background-color: var(--thirty-color);
-  border:1px solid var(--primary-color);
-}
-
-.sort-selection button.active {
-  background-color: var(--primary-color); 
-  color:var(--thirty-color);
-  border: 1px solid white;
-}
-
-.select-filter {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f0f0f0;
-  font-size: var(--primary-size);
-  color: #333;
-  outline: none;
-}

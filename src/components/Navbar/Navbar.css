@@ -1,3 +1,4 @@
+/* Navbar.css */
 .Navbar {
   font-family: var(--primary-font);
   font-size: var(--primary-size);
@@ -5,30 +6,33 @@
   min-height: 6%;
   background-color: var(--primary-color);
   display: flex;
-  align-items: center; 
+  align-items: center;
 }
 
 .nav-list {
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: space-around; 
-  
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
 }
 
-.nav_list_link{
+.nav_list_link {
   width: 25%;
   text-align: center;
-  height: auto;
+  height: 100%;
   color: var(--thirty-color);
   text-decoration: none;
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 
 .nav_list_link:hover,
-.nav_list_link:focus{
+.nav_list_link:focus {
   background-color: #7dbd57;
 }
 
@@ -47,4 +51,89 @@
 
 .button-style:hover {
   background-color: #7dbd57;
+}
+
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 1.5rem;
+}
+
+.menu-open {
+  max-height: 1000px;
+}
+
+@media (max-width: 767px) {
+  .Navbar {
+    min-height: 8%;
+    position: relative;
+    flex-direction: row-reverse;
+  }
+
+  .Navbar > .nav-list {
+    height: 30vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--primary-color);
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%);
+    overflow: auto;
+    z-index: 3;
+  }
+
+  .menu-toggle {
+    display: block;
+    top: 10px;
+    right: 10px;
+    z-index: 4;
+    cursor: pointer;
+  }
+
+  .Navbar > .nav-list.menu-open {
+    transform: translateX(0);
+  }
+
+  .nav_list_link {
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem 0;
+    color: var(--thirty-color);
+    text-decoration: none;
+  }
+
+  .button-style {
+    font-size: var(--primary-size);
+    background-color: var(--primary-color);
+    color: var(--thirty-color);
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .button-style:hover {
+    background-color: #7dbd57;
+  }
+  
+  .icon {
+    margin: 0.3em;
+  }
+}
+
+@media (min-width: 1980px){
+  .Navbar {
+  min-height: 5%;
+  font-size: var(--secondary-size);
+}
 }

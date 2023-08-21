@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import useFetchData from '../hook/useFetchData';
 
 const ProductContext = createContext();
 
@@ -7,6 +8,13 @@ export function ProductProvider({ children }) {
   const initialProduct = storedProduct ? JSON.parse(storedProduct) : null;
 
   const [selectedProduct, setSelectedProduct] = useState(initialProduct);
+
+  const handleLogout = () => {
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('userEmail');
+    setIsAuthenticated(false);
+    setUserEmail('');
+  };
 
   useEffect(() => {
     if (selectedProduct) {
@@ -29,15 +37,18 @@ export function ProductProvider({ children }) {
     }
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem('isAuthenticated');
-    localStorage.removeItem('userEmail');
-    setIsAuthenticated(false);
-    setUserEmail('');
-  };
+  const { data: products, loading, error } = useFetchData('https://raw.githubusercontent.com/Vfivew/DataSeedShop/main/data.json');
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
 
   return (
-    <ProductContext.Provider value={{ selectedProduct, setSelectedProduct, isAuthenticated, setIsAuthenticated, userEmail, setUserEmail, handleLogout }}>
+    <ProductContext.Provider value={{ selectedProduct, setSelectedProduct, isAuthenticated, setIsAuthenticated, userEmail, setUserEmail, products, handleLogout }}>
       {children}
     </ProductContext.Provider>
   );

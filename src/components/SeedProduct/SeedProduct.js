@@ -1,17 +1,16 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import useFetchData from '../../hook/useFetchData';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ProductCard from '../Cards/ProductCards';
 import Filters from '../Filters/Filters';
 import Sort from '../Sort/Sort';
-import { setSeedSort, resetSeedFilters  } from '../../reducers/SeedProductReducer';
+import { setSeedSort, resetSeedFilters } from '../../reducers/SeedProductReducer';
 import './SeedProduct.css';
 import { useProduct } from '../../context/contexts';
 
 function SeedProduct({ productTypeFilter }) {
   const dispatch = useDispatch();
-  const { data: products, loading, error } = useFetchData('https://raw.githubusercontent.com/Vfivew/DataSeedShop/main/data.json');
+  const { products } = useProduct();
   const seedFilters = useSelector(state => state.seedProduct.filters);
   const activeSort = useSelector(state => state.seedProduct.sortBy);
   const { setSelectedProduct } = useProduct();
@@ -46,30 +45,21 @@ function SeedProduct({ productTypeFilter }) {
     return filteredProducts.filter(product => currentFilters.selectedProductTypes.length === 0 || currentFilters.selectedProductTypes.includes(product.productType));
   }, [products, currentFilters, productTypeFilter]);
 
-  // const logger = () => {
-  //   sortedProducts.map(product => console.log(product.id))
-  // }
-  // logger()
-
   useEffect(() => {
+    console.log("reset")
+    dispatch(resetSeedFilters());
+  }, [dispatch, productTypeFilter]);// тут проблема з пошуком
+  
+  
+  useEffect(() => {
+    console.log(seedFilters)
     setCurrentFilters(seedFilters);
   }, [seedFilters]);
 
-    useEffect(() => {
-    dispatch(resetSeedFilters());
-  }, [dispatch, productTypeFilter]);
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>Error: {error.message}</p>;
-  }
-
-  if (!products) {
-    return <p>No data available.</p>;
-  }
+  // if (!products) {
+  //   return <p>No data available.</p>;
+  // }
 
   return (
     <div className='seed-product'>
@@ -103,3 +93,16 @@ function SeedProduct({ productTypeFilter }) {
 }
 
 export default SeedProduct;
+
+
+/* const didMountRef = useRef(false);
+
+  useEffect(() => {
+    // Пропустить первый рендер, не сбрасывать фильтры
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      return;
+    }
+    
+    dispatch(resetSeedFilters());
+  }, [dispatch, productTypeFilter]);*/

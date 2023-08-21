@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Sort.css';
+
 const Sort = ({ activeSort, handleSortClick, sortedProducts }) => {
   const handleSort = (sortMethod) => {
     if (sortMethod === 'cheap') {

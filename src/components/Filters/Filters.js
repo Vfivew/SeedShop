@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   toggleFilterHit,
   toggleFilterNew,
@@ -14,8 +14,9 @@ const Filters = ({
   uniqueProducers,
   uniqueProductTypes,
 }) => {
-    const handleProductTypeToggle = (productType) => {
-      console.log(seedFilters.selectedProductTypes)
+  const [showFilters, setShowFilters] = useState(false);
+
+  const handleProductTypeToggle = (productType) => {
     const updatedselectedProductTypes = seedFilters.selectedProductTypes.includes(productType)
       ? seedFilters.selectedProductTypes.filter((v) => v !== productType)
       : [...seedFilters.selectedProductTypes, productType];
@@ -28,8 +29,13 @@ const Filters = ({
     );
   };
 
+
   return (
-    <div className="filters">
+    <div>
+      <button className="toggle-filters-button" onClick={() => setShowFilters(!showFilters)}>
+        Фильтры
+      </button>
+     <div className={`filters ${showFilters ? 'show' : ''}`}>
       <h3 className='filters-title'>Насіння овочів</h3>
       <div className='seed-list-filter'>
         <label className={`filter ${seedFilters.hit ? 'active' : ''}`}>
@@ -87,6 +93,10 @@ const Filters = ({
           </option>
         ))}
       </select>
+        <button className="toggle-filters-button" onClick={() => setShowFilters(!showFilters)}>
+        Назад
+      </button>
+      </div>
     </div>
   );
 };

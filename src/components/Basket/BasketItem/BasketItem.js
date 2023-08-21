@@ -3,10 +3,13 @@ import { useDispatch } from 'react-redux';
 import { Icon } from '@iconify/react';
 import { removeFromCart, updateQuantityInCart } from '../../../reducers/basketReducer';
 import './BasketItem.css';
+import { Link } from 'react-router-dom';
+import { useProduct } from '../../../context/contexts';
 
-const BasketItem = ({ item }) => {
+const BasketItem = ({ item, product, onClose }) => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(item.quantity);
+  const { setSelectedProduct } = useProduct();
 
   const handleRemoveItem = (product) => {
     dispatch(removeFromCart(product));
@@ -28,8 +31,16 @@ const BasketItem = ({ item }) => {
 
   return (
     <div className='basket-item-pay-info'>
-      <img className='basket-item-pay-info-image' src={item.product.image} alt={item.product.name} />
-      <div className='basket-item-pay-info-name'>{item.product.name}</div>
+    <Link
+      className='basket-item-pay-link'
+      to={`/product/${item.product.id}`}
+        onClick={() => {
+        setSelectedProduct(item.product);
+      }}
+      >
+      <img onClick={onClose} className='basket-item-pay-info-image' src={product.image} alt={product.name} />
+    </Link>
+      <div className='basket-item-pay-info-name'>{product.name}</div> 
       <div className='basket-item-pay-info-quantity'>
         Кількість: 
         <input

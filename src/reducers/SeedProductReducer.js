@@ -26,6 +26,7 @@ const seedProductReducer = (state = initialState, action) => {
       };
     case SET_SEED_FILTERS:
       console.log('1')
+      console.log(action.payload)
       return {
         ...state,
         filters: action.payload,
