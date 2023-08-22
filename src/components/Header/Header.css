@@ -3,40 +3,40 @@
 }
 
 .header-block{
-    background-color:var(--thirty-color);
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    color: var(--secondary-color);
-    font-family:var(--primary-font);
-    font-size:var(--primary-size);
-    padding: 0.2em 0 0.2em 0;
-    align-items:center
+  background-color:var(--thirty-color);
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  color: var(--secondary-color);
+  font-family:var(--primary-font);
+  font-size:var(--primary-size);
+  padding: 0.2em 0 0.2em 0;
+  align-items:center
 }
 
 .info-block {
-    display: flex;
-    align-items:center;
-    justify-content: space-between;
+  display: flex;
+  align-items:center;
+  justify-content: space-between;
 }
 
 .phone-number {
-    text-decoration: none;
-    color: var(--secondary-color);
+  text-decoration: none;
+  color: var(--secondary-color);
 }
 
 .working-hours {
-    list-style: none;
-    margin-left:0.5em;
+  list-style: none;
+  margin-left:0.5em;
 }
 
 .working-hours-icon{
-    margin-left:1em;
+  margin-left:1em;
 }
 
 .image-logo{
-    width: 5em;
-    height: 5em;
+  width: 5em;
+  height: 5em;
 }
 
 .search-input {

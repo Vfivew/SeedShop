@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
+
 import './Tabs.css';
 
 const Tabs = ({ tabsData, activeTabId }) => {
+
   const [activeTab, setActiveTab] = useState(
     tabsData.find(tab => tab.id === activeTabId) || tabsData[0]
   );
 
   useEffect(() => {
-    console.log('++')
     const tabToUpdate = tabsData.find(tab => tab.id === activeTabId);
     if (tabToUpdate) {
       setActiveTab(tabToUpdate);

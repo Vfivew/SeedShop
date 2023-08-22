@@ -1,12 +1,19 @@
 .product-card {
   width: 300px;
   height: 450px;
-  background-color: white;
+  background-color: var(--thirty-color);
+  border:1px solid var(--secondary-color);
   display: flex;
   flex-direction: column;
   justify-content: space-between; 
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
+
+.product-card:hover {
+  border:1px solid var(--primary-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+}
+
 
 .product-image {
   position: relative;
@@ -39,10 +46,10 @@
 
 .best-seller {
   position: absolute;
-  bottom: -0.9em;
+  bottom: -1.1em;
   left: -4em;
   background-color: red;
-  color: white;
+  color: var(--thirty-color);;
   font-weight: bold;
   width: auto;
   height: 20px;
@@ -59,7 +66,7 @@
   bottom: -0.9em;
   left: -4em;
   background-color: rgb(0, 68, 255);
-  color: white;
+  color: var(--thirty-color);
   font-weight: bold;
   width: auto;
   height: 20px;

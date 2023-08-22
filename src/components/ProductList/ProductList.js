@@ -4,6 +4,7 @@ import ProductCard from '../Cards/ProductCards';
 import { setSortBy } from '../../reducers/productsReducer';
 import { Link } from 'react-router-dom';
 import { useProduct } from '../../context/contexts'; 
+
 import './ProductList.css';
 
 function ProductList() {

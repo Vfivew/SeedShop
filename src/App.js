@@ -10,6 +10,8 @@ import ProductDetails from './components/ProductDetails/ProductDetails';
 import { ProductProvider } from './context/contexts';
 import Form from './components/Form/Form';
 import AuthComponent from './components/AuthComponent/AuthComponent';
+import ErrorPage from './page/ErrorPage/ErrorPage';
+import ScrollTop from './components/ScrollTop/ScrollTop'
 
 function App() {
   return (
@@ -29,9 +31,10 @@ function App() {
           <Route path="/tabs/paymentdeliver" element={<InfoPage activeTabId={3} />} />
           <Route path='/product/:productId' element={<ProductDetails />} />
           <Route path='/form'element={<Form />}  />
-          <Route path='*'  />
+          <Route path='*' element={<ErrorPage/>} />
         </Routes>
       </main>
+        <ScrollTop/>
         <Footer />
         </ProductProvider>
     </Router>

@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
-import {
-  toggleFilterHit,
+import {toggleFilterHit,
   toggleFilterNew,
   toggleFilterDiscount,
   setSeedProducerFilter,
   setSeedFilters,
 } from '../../reducers/SeedProductReducer';
+
 import './Filters.css';
 
-const Filters = ({
-  seedFilters,
-  dispatch,
-  uniqueProducers,
-  uniqueProductTypes,
-}) => {
+const Filters = ({ seedFilters, dispatch, uniqueProducers, uniqueProductTypes,}) => {
+
   const [showFilters, setShowFilters] = useState(false);
 
   const handleProductTypeToggle = (productType) => {

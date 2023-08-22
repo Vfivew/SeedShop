@@ -50,7 +50,7 @@ function ProductDetails() {
   };
 
   if (!selectedProduct) {
-    return <p>Продукт не найден.</p>;
+    return <p>Продукт не знайдено.</p>;
   }
   
   return (

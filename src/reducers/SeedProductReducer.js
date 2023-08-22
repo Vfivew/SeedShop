@@ -25,14 +25,11 @@ const seedProductReducer = (state = initialState, action) => {
         filters: initialState.filters,
       };
     case SET_SEED_FILTERS:
-      console.log('1')
-      console.log(action.payload)
       return {
         ...state,
         filters: action.payload,
       };
     case SET_SEED_PRODUCER_FILTER:
-       console.log('2')
       return {
         ...state,
         filters: {
@@ -41,13 +38,11 @@ const seedProductReducer = (state = initialState, action) => {
         },
       };
     case SET_SEED_SORT:
-       console.log('3')
       return {
         ...state,
         sortBy: action.payload,
       };
     case TOGGLE_FILTER_HIT:
-       console.log('4')
       return {
         ...state,
         filters: {
@@ -56,7 +51,6 @@ const seedProductReducer = (state = initialState, action) => {
         },
       };
     case TOGGLE_FILTER_NEW:
-       console.log('5')
       return {
         ...state,
         filters: {
@@ -65,7 +59,6 @@ const seedProductReducer = (state = initialState, action) => {
         },
       };
     case TOGGLE_FILTER_DISCOUNT:
-       console.log('6')
       return {
         ...state,
         filters: {

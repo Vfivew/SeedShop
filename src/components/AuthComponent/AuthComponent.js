@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import './AuthComponent.css';
 import { useProduct } from '../../context/contexts';
+
+import './AuthComponent.css';
 
 function AuthComponent() {
   const { isAuthenticated, setIsAuthenticated, setUserEmail, userEmail, handleLogout } = useProduct();

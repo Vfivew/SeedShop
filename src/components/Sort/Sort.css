@@ -40,6 +40,11 @@
   border:1px solid var(--primary-color);
 }
 
+.sort-selection button:hover,
+.sort-selection button:focus {
+  background-color: rgb(157, 215, 69);
+}
+
 .sort-selection button.active {
   background-color: var(--primary-color); 
   color:var(--thirty-color);
@@ -67,5 +72,7 @@
 }
 
 @media (min-width: 1980px){
-
+      .sort-selection button{
+        font-size: var(--secondary-size);
+    }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import BasketItem from './BasketItem/BasketItem';
 import { useNavigate } from 'react-router-dom';
+
 import './Basket.css';
 
 const Basket = ({ onClose }) => {

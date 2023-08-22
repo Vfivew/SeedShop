@@ -95,3 +95,14 @@
     padding: 0.1em 0.1em;
   }
 }
+
+@media (min-width: 1980px) {
+  .filters {
+    font-size: var(--secondary-size); 
+  }
+
+  .seed-list-filter-cheakbox,
+  .select-filter {
+    font-size: var(--secondary-size); 
+  }
+}

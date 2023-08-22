@@ -15,10 +15,10 @@ function ProductCard({ product }) {
         <div className={`sticker ${isBestSeller ? 'best-seller' : ''}`}>
           {isBestSeller && 'Хіт продаж'}
         </div>
-        <div className={`sticker ${isNew ? 'new' : ''} `} style={{ top: isBestSeller ? 'calc(85% + 0.67em)' : 'calc(85% + 2.68em)' }}>
+        <div className={`sticker ${isNew ? 'new' : ''} `} style={{ top: isBestSeller ? 'calc(85% + 0.85em)' : 'calc(85% + 2.68em)' }}>
           {isNew && 'Новинка'}
         </div>
-        <div className={`sticker ${isDiscount ? 'discount' : ''}  `} style={{ top: isBestSeller ? 'calc(85% - 1.32em)' : isNew ? 'calc(85% + 0.68em)' : 'calc(85% + 2.68em)' }}>
+        <div className={`sticker ${isDiscount ? 'discount' : ''}  `} style={{ top: isBestSeller ? 'calc(85% - 1.15em)' : isNew ? 'calc(85% + 0.68em)' : 'calc(85% + 2.7em)' }}>
           {isDiscount && 'Знижка'}
         </div>
       </div>

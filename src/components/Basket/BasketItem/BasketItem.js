@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Icon } from '@iconify/react';
 import { removeFromCart, updateQuantityInCart } from '../../../reducers/basketReducer';
-import './BasketItem.css';
 import { Link } from 'react-router-dom';
 import { useProduct } from '../../../context/contexts';
+
+import './BasketItem.css';
 
 const BasketItem = ({ item, product, onClose }) => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const BasketItem = ({ item, product, onClose }) => {
     </Link>
       <div className='basket-item-pay-info-name'>{product.name}</div> 
       <div className='basket-item-pay-info-quantity'>
-        Кількість: 
+        Кількість 
         <input
           className='basket-item-pay-info-quantity-input'
           type='number'

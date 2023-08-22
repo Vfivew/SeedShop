@@ -1,6 +1,8 @@
 import React from 'react';
 import Tabs from '../../components/Tabs/Tabs';
 
+import './InfoPage.css';
+
   const tabsData = [
     { id: 1, title: 'Контакти', content: 'Опис розділу "Контакти"' },
     { id: 2, title: 'Про нас', content: 'Опис розділу "Про нас"' },
@@ -9,7 +11,7 @@ import Tabs from '../../components/Tabs/Tabs';
 
 const InfoPage = ({ activeTabId }) => {
   return (
-    <div>
+    <div className='info-page'>
       <Tabs tabsData={tabsData} activeTabId={activeTabId} />
     </div>
   );

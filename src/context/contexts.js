@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import useFetchData from '../hook/useFetchData';
+import Spinner from "../components/Spinner/Spinner"
 
 const ProductContext = createContext();
 
@@ -40,11 +41,11 @@ export function ProductProvider({ children }) {
   const { data: products, loading, error } = useFetchData('https://raw.githubusercontent.com/Vfivew/DataSeedShop/main/data.json');
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Spinner/>;
   }
 
   if (error) {
-    return <p>Error: {error.message}</p>;
+    return <p>Щось зламалось... спробуйте пізніше. {error.message}</p>;
   }
 
   return (

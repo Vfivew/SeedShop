@@ -1,7 +1,7 @@
 .tabs-container {
   font-family: var(--primary-font);
   font-size: var(--primary-size); 
-  padding: 1em 0 0 1em;
+  padding: 1em ;
   display: flex;
   width: 100%;
 }
@@ -46,3 +46,25 @@
 .tabs-description p {
   line-height: 1.5;
 }
+
+@media (max-width: 767px) {
+  .tabs-container {
+  display:block;
+  }
+
+  .tabs-menu{
+    width: auto;
+    text-align: center;
+  }
+
+  .tabs-content {
+  width: auto;
+  padding-left: 0;
+  }
+
+  .tabs-content h2{
+  text-align: center;
+  padding-top: 0.3em;
+}
+}
+

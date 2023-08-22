@@ -5,15 +5,21 @@ import ProductCard from '../Cards/ProductCards';
 import Filters from '../Filters/Filters';
 import Sort from '../Sort/Sort';
 import { setSeedSort, resetSeedFilters } from '../../reducers/SeedProductReducer';
-import './SeedProduct.css';
 import { useProduct } from '../../context/contexts';
+import Spinner from '../Spinner/Spinner';
+import Pagination from '../../utils/Pagination/Pagination';
+
+import './SeedProduct.css';
 
 function SeedProduct({ productTypeFilter }) {
   const dispatch = useDispatch();
-  const { products } = useProduct();
+  const { products, loading, setSelectedProduct } = useProduct();
   const seedFilters = useSelector(state => state.seedProduct.filters);
   const activeSort = useSelector(state => state.seedProduct.sortBy);
-  const { setSelectedProduct } = useProduct();
+
+  const [currentFilters, setCurrentFilters] = useState(seedFilters);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
 
   const handleSortClick = (sortMethod) => dispatch(setSeedSort(sortMethod));
 
@@ -27,7 +33,11 @@ function SeedProduct({ productTypeFilter }) {
     return [...new Set(products.filter(product => product.type === productTypeFilter).map(product => product.productType))];
   }, [products, productTypeFilter]);
 
-  const [currentFilters, setCurrentFilters] = useState(seedFilters);
+  const calculateIndexes = () => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return { startIndex, endIndex };
+  };
 
   const sortedProducts = useMemo(() => {
     if (!products) return [];
@@ -45,21 +55,20 @@ function SeedProduct({ productTypeFilter }) {
     return filteredProducts.filter(product => currentFilters.selectedProductTypes.length === 0 || currentFilters.selectedProductTypes.includes(product.productType));
   }, [products, currentFilters, productTypeFilter]);
 
+  const { startIndex, endIndex } = calculateIndexes();
+  const productsToShow = sortedProducts.slice(startIndex, endIndex);
+
   useEffect(() => {
-    console.log("reset")
     dispatch(resetSeedFilters());
-  }, [dispatch, productTypeFilter]);// тут проблема з пошуком
-  
-  
+  }, [dispatch, productTypeFilter]);
+
   useEffect(() => {
-    console.log(seedFilters)
     setCurrentFilters(seedFilters);
   }, [seedFilters]);
 
-
-  // if (!products) {
-  //   return <p>No data available.</p>;
-  // }
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <div className='seed-product'>
@@ -77,32 +86,24 @@ function SeedProduct({ productTypeFilter }) {
           sortedProducts={sortedProducts}
         />
         <div className='seed-list'>
-          {sortedProducts.map(product => (
-          <Link
-          key={product.id}
-          to={`/product/${product.id}`}
-          onClick={() => setSelectedProduct(product)}
-          >
+          {productsToShow.map(product => (
+            <Link
+              key={product.id}
+              to={`/product/${product.id}`}
+              onClick={() => setSelectedProduct(product)}
+            >
               <ProductCard product={product} />
-          </Link>
+            </Link>
           ))}
         </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={Math.ceil(sortedProducts.length / itemsPerPage)}
+          onPageChange={setCurrentPage}
+        />
       </div>
     </div>
   );
 }
 
 export default SeedProduct;
-
-
-/* const didMountRef = useRef(false);
-
-  useEffect(() => {
-    // Пропустить первый рендер, не сбрасывать фильтры
-    if (!didMountRef.current) {
-      didMountRef.current = true;
-      return;
-    }
-    
-    dispatch(resetSeedFilters());
-  }, [dispatch, productTypeFilter]);*/
