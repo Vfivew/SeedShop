@@ -16,7 +16,8 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-  transition: max-height 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  font-weight: bold;
 }
 
 .nav_list_link {

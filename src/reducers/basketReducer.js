@@ -1,6 +1,9 @@
 const ADD_TO_CART = 'ADD_TO_CART';
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 const UPDATE_QUANTITY_IN_CART = 'UPDATE_QUANTITY_IN_CART';
+const OPEN_BASKET = 'OPEN_BASKET';
+const CLOSE_BASKET = 'CLOSE_BASKET';
+
 
 const initialCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
@@ -31,7 +34,6 @@ const basketReducer = (state = initialState, action) => {
           cartItems: updatedCart,
         };
       } else {
-        // Add the new item to the cart
         const updatedCart = [...state.cartItems, newItem];
 
         localStorage.setItem('cartItems', JSON.stringify(updatedCart));
@@ -66,6 +68,18 @@ const basketReducer = (state = initialState, action) => {
         cartItems: updatedCartWithUpdatedQuantity,
     };
 
+    case OPEN_BASKET:
+      return {
+        ...state,
+        isBasketOpen: true,
+      };
+
+    case CLOSE_BASKET:
+      return {
+        ...state,
+        isBasketOpen: false,
+      };
+
     default:
       return state;
   }
@@ -84,6 +98,14 @@ export const removeFromCart = (product) => ({
 export const updateQuantityInCart = (product, quantity) => ({
   type: UPDATE_QUANTITY_IN_CART,
   payload: { product, quantity },
+});
+
+export const openBasket = () => ({
+  type: OPEN_BASKET,
+});
+
+export const closeBasket = () => ({
+  type: CLOSE_BASKET,
 });
 
 export default basketReducer;

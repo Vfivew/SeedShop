@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import Logo from '../../resources/image/Logo.png';
 import { Icon } from '@iconify/react';
+import Logo from '../../resources/image/Logo.png';
 
 import './Footer.css';
 

@@ -36,18 +36,17 @@
   cursor: pointer;
   border-radius:55px;
   color:var(--secondary-color);
-  background-color: var(--thirty-color);
+  background:var(--gradient);
   border:1px solid var(--primary-color);
 }
 
 .sort-selection button:hover,
 .sort-selection button:focus {
-  background-color: rgb(157, 215, 69);
+  background:var(--gradienteffect);
 }
 
 .sort-selection button.active {
   background-color: var(--primary-color); 
-  color:var(--thirty-color);
   border: 1px solid white;
 }
 

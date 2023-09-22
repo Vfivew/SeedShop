@@ -1,25 +1,34 @@
 import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import Logo from '../../resources/image/Logo.png';
-import Basket from '../Basket/Basket';
-import { useDispatch, useSelector } from 'react-redux';
 import { setSeedFilters } from '../../reducers/SeedProductReducer';
 import { useProduct } from '../../context/contexts';
+import { openBasket, closeBasket } from "../../reducers/basketReducer"
+import Basket from '../Basket/Basket';
+import Logo from '../../resources/image/Logo.png';
 
 import './Header.css';
 
 const Header = () => {
   const navigate = useNavigate();
-  const [basketOpen, setBasketOpen] = useState(false);
   const [searchText, setSearchText] = useState('');
   const { products } = useProduct();
 
   const dispatch = useDispatch();
   const seedFilters = useSelector(state => state.seedProduct.filters);
+  const cartItems = useSelector(state => state.basket.cartItems);
+  const isBasketOpen = useSelector(state => state.basket.isBasketOpen);
+
+  const uniqueProductIds = new Set(cartItems.map(item => item.product.id));
+  const uniqueProductCount = uniqueProductIds.size;
 
   const toggleBasket = () => {
-    setBasketOpen(!basketOpen);
+    if (isBasketOpen) {
+      dispatch(closeBasket());
+    } else {
+      dispatch(openBasket());
+    }
   };
 
   const handleSearch = () => {
@@ -69,15 +78,22 @@ const Header = () => {
           />
           <div
             className='search-icon'
-            onClick={handleSearch} // Вызываем handleSearch напрямую
+            onClick={handleSearch} 
           >
             <Icon className='search-input-insert-icon' icon="bi:search" color="green" width="10" height="10" />
           </div>
         </div>
       </div>
       <div className='basket-block'>
-        <Icon className='basket-block-icon' icon="fluent-emoji-high-contrast:basket" width="40" height="40" onClick={toggleBasket} />
-        {basketOpen && <Basket onClose={toggleBasket} />}
+        <div className='basket-icon-wrapper' onClick={toggleBasket}>
+          <Icon className='basket-block-icon' icon="fluent-emoji-high-contrast:basket" width="40" height="40" />
+          {uniqueProductCount > 0 && (
+            <div className='basket-item-count'>
+              {uniqueProductCount}
+            </div>
+          )}
+        </div>
+        {isBasketOpen && <Basket onClose={toggleBasket} />}
       </div>
     </header>
   );

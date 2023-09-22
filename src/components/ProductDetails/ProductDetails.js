@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { useProduct } from '../../context/contexts';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../reducers/basketReducer';
-import './ProductDetails.css';
+import { openBasket, closeBasket } from '../../reducers/basketReducer';
 import Tabs from '../Tabs/Tabs';
 import Basket from '../Basket/Basket';
 
+import './ProductDetails.css';
+
 function ProductDetails() {
+  const dispatch = useDispatch();
   const { selectedProduct } = useProduct();
   const [quantity, setQuantity] = useState(0);
-  const [isBasketOpen, setIsBasketOpen] = useState(false); 
-  const dispatch = useDispatch();
+  const isBasketOpen = useSelector(state => state.basket.isBasketOpen);
 
   const availabilityText = selectedProduct.quantityAvailable > 0 ? 'В наявності' : 'Немає в наявності';
   const availabilityStyle = selectedProduct.quantityAvailable > 0 ? { color: 'green' } : { color: 'red' };
@@ -22,7 +24,7 @@ function ProductDetails() {
   ];
 
   const handleIncrease = () => {
-    if (quantity < "100001") {
+    if (quantity < 100001) {
       setQuantity(quantity + 1);
     }
   };
@@ -35,7 +37,7 @@ function ProductDetails() {
 
   const handleQuantityChange = (event) => {
     const newQuantity = parseInt(event.target.value, 10);
-    if (!isNaN(newQuantity) && newQuantity >= 0 && newQuantity < "100001") {
+    if (!isNaN(newQuantity) && newQuantity >= 0 && newQuantity < 100001) {
       setQuantity(newQuantity);
     } else if (event.target.value === '') {
       setQuantity(0);
@@ -45,14 +47,14 @@ function ProductDetails() {
   const handleAddToCart = () => {
     if (quantity > 0) {
       dispatch(addToCart(selectedProduct, quantity));
-      setIsBasketOpen(true); 
+      dispatch(openBasket());
     }
   };
 
   if (!selectedProduct) {
     return <p>Продукт не знайдено.</p>;
   }
-  
+
   return (
     <div className="select-product-details">
       <div className="select-product-details-image-block">
@@ -62,7 +64,7 @@ function ProductDetails() {
         <div className="select-product-details-head">
           <h2>{selectedProduct.name}</h2>
           <p className="select-product-details-head-price">Ціна: {selectedProduct.price}</p>
-          <p style={availabilityStyle}>{availabilityText}</p>
+          <p className="product-availability" style={availabilityStyle}>{availabilityText}</p>
           <div className="select-product-details-button-block">
             <button className="select-product-details-combined-button" onClick={handleDecrease}>
               -
@@ -78,10 +80,19 @@ function ProductDetails() {
             <button className="select-product-details-combined-button" onClick={handleIncrease}>
               +
             </button>
-            <button className="select-product-details-head-button" onClick={handleAddToCart}>
+            <button
+              className="select-product-details-head-button"
+              onClick={handleAddToCart}
+              disabled={selectedProduct.quantityAvailable <= 0}
+              style={
+                selectedProduct.quantityAvailable <= 0
+                  ? { backgroundColor: 'lightgray', color: 'gray', cursor: 'not-allowed' }
+                  : {}
+              }
+            >
               До корзини
             </button>
-            {isBasketOpen && <Basket onClose={() => setIsBasketOpen(false)} />}
+            {isBasketOpen && <Basket onClose={() => dispatch(closeBasket())} />}
           </div>
         </div>
         <div className="select-product-details-description">
@@ -89,7 +100,7 @@ function ProductDetails() {
           <p>{selectedProduct.description}</p>
         </div>
         <div className="select-product-details-delivery">
-           <Tabs tabsData={tabsData} className="product-details-tabs"  />
+          <Tabs tabsData={tabsData} className="product-details-tabs" />
         </div>
       </div>
     </div>

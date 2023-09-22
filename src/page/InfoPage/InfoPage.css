@@ -1,4 +1,5 @@
 .info-page{
     min-height: 200px;
-    background-color:var(--fourth-color)
+    padding: 1em;
+    background-color:var(--fourth-color);
 }

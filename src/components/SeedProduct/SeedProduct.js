@@ -1,11 +1,12 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useProduct } from '../../context/contexts';
 import { Link } from 'react-router-dom';
+import { setSeedSort, resetSeedFilters, setCurrentFilters } from '../../reducers/SeedProductReducer';
+import { setCurrentPage } from '../../reducers/paginationReducer';
 import ProductCard from '../Cards/ProductCards';
 import Filters from '../Filters/Filters';
 import Sort from '../Sort/Sort';
-import { setSeedSort, resetSeedFilters } from '../../reducers/SeedProductReducer';
-import { useProduct } from '../../context/contexts';
 import Spinner from '../Spinner/Spinner';
 import Pagination from '../../utils/Pagination/Pagination';
 
@@ -14,12 +15,9 @@ import './SeedProduct.css';
 function SeedProduct({ productTypeFilter }) {
   const dispatch = useDispatch();
   const { products, loading, setSelectedProduct } = useProduct();
-  const seedFilters = useSelector(state => state.seedProduct.filters);
   const activeSort = useSelector(state => state.seedProduct.sortBy);
-
-  const [currentFilters, setCurrentFilters] = useState(seedFilters);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9;
+  const currentFilters = useSelector(state => state.seedProduct.filters);
+  const currentPage = useSelector(state => state.pagination.currentPage);
 
   const handleSortClick = (sortMethod) => dispatch(setSeedSort(sortMethod));
 
@@ -32,6 +30,8 @@ function SeedProduct({ productTypeFilter }) {
     if (!products) return [];
     return [...new Set(products.filter(product => product.type === productTypeFilter).map(product => product.productType))];
   }, [products, productTypeFilter]);
+
+  const itemsPerPage = 9;
 
   const calculateIndexes = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -60,11 +60,12 @@ function SeedProduct({ productTypeFilter }) {
 
   useEffect(() => {
     dispatch(resetSeedFilters());
-  }, [dispatch, productTypeFilter]);
+    dispatch(setCurrentPage(1)); 
+  }, [dispatch, productTypeFilter, sortedProducts]);
 
   useEffect(() => {
-    setCurrentFilters(seedFilters);
-  }, [seedFilters]);
+    dispatch(setCurrentFilters(currentFilters));
+  }, [dispatch, currentFilters]);
 
   if (loading) {
     return <Spinner />;
@@ -78,6 +79,7 @@ function SeedProduct({ productTypeFilter }) {
         products={products}
         uniqueProducers={uniqueProducers}
         uniqueProductTypes={uniqueProductTypes}
+        activeFilters={currentFilters.hit || currentFilters.new || currentFilters.discount || currentFilters.selectedProducer || currentFilters.selectedProductTypes.length > 0}
       />
       <div className="product-block">
         <Sort
@@ -99,7 +101,7 @@ function SeedProduct({ productTypeFilter }) {
         <Pagination
           currentPage={currentPage}
           totalPages={Math.ceil(sortedProducts.length / itemsPerPage)}
-          onPageChange={setCurrentPage}
+          onPageChange={(page) => dispatch(setCurrentPage(page))}
         />
       </div>
     </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './ProductCards.css'; 
 
 function ProductCard({ product }) {
@@ -25,7 +26,7 @@ function ProductCard({ product }) {
       <div className="product-details">
         <h4>{product.name}</h4>
         <p className='price'>Ціна: {product.price} грн</p>
-        <p style={availabilityStyle}>{availabilityText}</p>
+        <p className='product-availability' style={availabilityStyle}>{availabilityText}</p>
       </div>
     </div>
   );

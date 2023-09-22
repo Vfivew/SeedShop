@@ -8,18 +8,18 @@
 }
 
 .pagination-btn{
-    background-color:var(--thirty-color);
+    background:var(--gradient);
     color:var(--secnodary-color);
-    border:2px solid var(--primary-color);
+    border:1px solid var(--primary-color);
     padding: 0.5em;
     border-radius:5em;
 }
 
 .pagination-btn:hover,
 .pagination-btn:focus {
-    background-color:var(--primary-color);
-    color:var(--thirty-color);
-    border:2px solid var(--thirty-color);
+    background:var(--gradienteffect);
+    color:var(--secondary-color);
+    border:1px solid var(--secondary-color);
 
 }
 

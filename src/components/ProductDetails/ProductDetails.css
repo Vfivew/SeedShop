@@ -19,9 +19,11 @@ input[type="number"] {
     align-items: center;
     justify-content: center;
     width: 25%;
-    background-color: var(--thirty-color);
     margin: 1em;
     max-height: 450px;
+    background:var(--gradient);
+    border: 1px solid black;
+    border-radius:1em;
 }
 
 .select-product-details-image {
@@ -38,6 +40,9 @@ input[type="number"] {
 .select-product-details-head{
     background-color:var(--thirty-color);
     padding: 1em;
+    background:var(--gradient);
+    border: 1px solid black;
+    border-radius:1em;
 }
 
 .select-product-details-button-block{
@@ -87,8 +92,8 @@ input[type="number"] {
 
 .select-product-details-combined-button:hover,
 .select-product-details-combined-button:focus{  
-        background-color: var(--primary-color);
-        color: var(--thirty-color)
+    background-color: var(--primary-color);
+    color: var(--thirty-color)
     }
 
 .select-product-details-quantity {
@@ -107,16 +112,20 @@ input[type="number"] {
 }
 
 .select-product-details-description{
-    background-color:var(--thirty-color);
     padding: 1em;
     margin-top: 1em;
+    background:var(--gradient);
+    border: 1px solid black;
+    border-radius:1em;
 }
 
 .select-product-details-delivery{
-    background-color:var(--thirty-color);
-    padding: 1em;
     margin-top: 1em;
+    background:var(--gradient);
+}
 
+.product-availability{
+    font-weight: bold;
 }
 
 

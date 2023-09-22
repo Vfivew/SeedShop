@@ -1,28 +1,27 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Controller, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { setDeliveryMethod, setIsOrderPlaced } from '../../reducers/formReducer'; 
 import BasketItem from '../Basket/BasketItem/BasketItem';
-import { useForm, Controller } from 'react-hook-form';
-import { useNavigate  } from 'react-router-dom';
 
 import './Form.css';
 
 const Form = () => {
-  const [deliveryMethod, setDeliveryMethod] = useState('');
-  const [isOrderPlaced, setIsOrderPlaced] = useState(false); 
-  
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  
-  const { handleSubmit, control, formState: { errors, isValid }} = useForm({mode:"onBlur"});
+  const { handleSubmit, control, formState: { errors, isValid } } = useForm({ mode: 'onBlur' });
 
   const cartItems = useSelector(state => state.basket.cartItems);
+  const { deliveryMethod, isOrderPlaced } = useSelector(state => state.form); 
 
   const onSubmit = (data) => {
     console.log(data);
-    setIsOrderPlaced(true); 
+    dispatch(setIsOrderPlaced(true));
   };
 
   const closeModal = () => {
-    setIsOrderPlaced(false);
+    dispatch(setIsOrderPlaced(false));
     navigate('/');
     localStorage.removeItem('isOrderPlaced');
     localStorage.removeItem('cartItems');
@@ -151,7 +150,7 @@ const Form = () => {
       <div className='form-basket-items'>
         <ul className='form-basket-items-list'>
     {cartItems.length === 0 ? (
-      <p>Ви не обрали жодного товару...</p>
+      <p className='form-basket-item-message'>Ви не обрали жодного товару...</p>
     ) : (
       cartItems.map((item, index) => (
       <li key={index}>

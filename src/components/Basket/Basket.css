@@ -12,7 +12,7 @@
 }
 
 .basket-content {
-    background-color: white;
+    background:var(--gradient);
     border-radius: 10px;
     padding: 20px;
     width: 75%;
@@ -49,8 +49,8 @@
 }
 
 .basket-items-button {
-   background-color: var(--primary-color);
-   color: var(--thirty-color);
+   background:var(--gradient);
+   color: var(--secondary-color);
    padding: 1em;
    border-radius: 5em;
    border: 0.2em solid var(--primary-color);
@@ -61,7 +61,7 @@
 
 .basket-items-button:hover,
 .basket-items-button:focus {
-    background-color: var(--thirty-color);
+    background:var(--gradienteffect);
     color: var(--primary-color);
     border-color: var(--primary-color);
 }

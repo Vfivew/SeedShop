@@ -1,4 +1,4 @@
-import './App.css';
+import { ProductProvider } from './context/contexts';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Header from './components/Header/Header';
@@ -7,11 +7,13 @@ import InfoPage from './page/InfoPage/InfoPage';
 import Home from './page/Home/Home';
 import SeedProduct from './components/SeedProduct/SeedProduct';
 import ProductDetails from './components/ProductDetails/ProductDetails';
-import { ProductProvider } from './context/contexts';
 import Form from './components/Form/Form';
 import AuthComponent from './components/AuthComponent/AuthComponent';
 import ErrorPage from './page/ErrorPage/ErrorPage';
 import ScrollTop from './components/ScrollTop/ScrollTop'
+import Info from './components/Info/Info';
+
+import './App.css';
 
 function App() {
   return (
@@ -24,7 +26,7 @@ function App() {
           <Route path='/'  element={<Home/>}/>
           <Route path='/seedvegetable'  element={<SeedProduct productTypeFilter="Овочі" />} />
           <Route path='/seedberries' element={<SeedProduct productTypeFilter="Ягоди" />} />
-          <Route path='/othergoods' element={<Form/>} />
+          <Route path='/othergoods'  element={<Info/>}  />
           <Route path='/authorization' element={<AuthComponent/>} />
           <Route path="/tabs/contact" element={<InfoPage activeTabId={1} />} />
           <Route path="/tabs/aboutsus" element={<InfoPage activeTabId={2} />} />

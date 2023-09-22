@@ -1,13 +1,13 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import BasketItem from './BasketItem/BasketItem';
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
+import BasketItem from './BasketItem/BasketItem';
 
 import './Basket.css';
 
 const Basket = ({ onClose }) => {
-  const cartItems = useSelector(state => state.basket.cartItems);
   const navigate = useNavigate();
+  const cartItems = useSelector(state => state.basket.cartItems);
 
   const totalAmount = cartItems.reduce((total, item) => total + (item.product.price * item.quantity), 0);
   const formattedTotalAmount = `${totalAmount.toLocaleString('en-US')} грн`;

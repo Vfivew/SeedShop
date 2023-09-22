@@ -3,6 +3,7 @@ const initialState = {
   sortBy: 'sold',
   filterDiscount: false,
   filterNew: false,
+  activeButton: 'sold'
 };
 
 const SET_PRODUCTS = 'SET_PRODUCTS'
@@ -21,6 +22,7 @@ const productsReducer = (state = initialState, action) => {
       return {
         ...state,
         sortBy: action.payload,
+        activeButton: action.payload,
       };
     case TOGGLE_FILTER_DISCOUNT:
       return {

@@ -1,19 +1,19 @@
 .main-image{
-    width: 90%;
-    min-height: 50vh;
-    margin: 2em auto;
-    background-image: url('../../resources/image/main_image.jpg');
-    background-repeat: no-repeat;
-    background-size: cover; 
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: left;
+  width: 90%;
+  min-height: 50vh;
+  margin: 2em auto;
+  background-image: url('../../resources/image/main_image.jpg');
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: left;
 }
 
 .main-slogan{
-    margin-left: 2em;
-    color: var(--thirty-color);
+  margin-left: 2em;
+  color: var(--thirty-color);
 }
 
 .product-container{

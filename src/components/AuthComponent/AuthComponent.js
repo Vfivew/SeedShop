@@ -60,6 +60,7 @@ function AuthComponent() {
 
   return (
     <div className="auth-container">
+      <p>Реєстрація може не працювати. Вони тут лише для моєї практики. Реалізую згодом через Firebase</p>
       {isAuthenticated ? (
         <>
           <p>{userEmail}</p>

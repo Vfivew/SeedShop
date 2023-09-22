@@ -1,9 +1,12 @@
 .tabs-container {
+  margin: 1em;
   font-family: var(--primary-font);
   font-size: var(--primary-size); 
   padding: 1em ;
   display: flex;
-  width: 100%;
+  background:var(--gradient);
+  border:1px solid black;
+  border-radius:1em
 }
 
 .tabs-menu {
@@ -18,6 +21,8 @@
   border: 1px solid var(--fourth-color);
   background-color: var(--thirty-color);
   margin-bottom: 0.5em;
+  border:1px solid black;
+  border-radius:1em
 }
 
 .tab:hover,

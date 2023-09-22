@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ProductCard from '../Cards/ProductCards';
 import { setSortBy } from '../../reducers/productsReducer';
 import { Link } from 'react-router-dom';
 import { useProduct } from '../../context/contexts'; 
+import ProductCard from '../Cards/ProductCards';
 
 import './ProductList.css';
 
@@ -11,18 +11,17 @@ function ProductList() {
   const dispatch = useDispatch();
   const { products } = useProduct();
   const sortBy = useSelector(state => state.products.sortBy);
+  const activeButton = useSelector(state => state.products.activeButton); 
+
   const { setSelectedProduct } = useProduct();
 
-  const [activeButton, setActiveButton] = useState('sold');
-
   const handleButtonClick = (value) => {
-    setActiveButton(value);
     dispatch(setSortBy(value));
   };
 
   let sortedAndFilteredProducts = [...products];
   if (sortBy === 'sold') {
-    sortedAndFilteredProducts = sortedAndFilteredProducts.filter(product => product.sold > 9); // Фильтрация по продажам больше 9
+    sortedAndFilteredProducts = sortedAndFilteredProducts.filter(product => product.sold > 9);
     sortedAndFilteredProducts.sort((a, b) => b.sold - a.sold);
   } else if (sortBy === 'discount') {
     sortedAndFilteredProducts = sortedAndFilteredProducts.filter(product => product.discount);
@@ -56,18 +55,16 @@ function ProductList() {
       <div className="product-list">
         {sortedAndFilteredProducts.map(product => (
           <Link
-          key={product.id}
-          to={`/product/${product.id}`}
-          onClick={() => setSelectedProduct(product)}
+            key={product.id}
+            to={`/product/${product.id}`}
+            onClick={() => setSelectedProduct(product)}
           >
-              <ProductCard product={product} />
+            <ProductCard product={product} />
           </Link>
-          ))}
+        ))}
       </div>
     </div>
   );
 }
 
 export default ProductList;
-
-
