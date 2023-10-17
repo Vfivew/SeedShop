@@ -5,8 +5,6 @@
   padding: 1em ;
   display: flex;
   background:var(--gradient);
-  border:1px solid black;
-  border-radius:1em
 }
 
 .tabs-menu {

@@ -122,6 +122,8 @@ input[type="number"] {
 .select-product-details-delivery{
     margin-top: 1em;
     background:var(--gradient);
+    border:1px solid black;
+     border-radius:1em
 }
 
 .product-availability{
