@@ -1,70 +1,81 @@
-.basket-item-pay-info{
-    font-size: var(--primary-size);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.basket-item-pay-info {
+  font-size: var(--primary-size);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.basket-item-pay-link{
-    width: 12%;
+.basket-item-pay-link {
+  width: 12%;
 }
 
-.basket-item-pay-info-image{
-    width: 100%;
-    margin: 0.3em 0 0 0.3em;
-    border: 1px solid black;
+.basket-item-pay-info-image {
+  width: 100%;
+  margin: 0.3em 0 0 0.3em;
+  border: 1px solid black;
 }
 
-.basket-item-pay-info-name{
-    width: 30%;
+.basket-item-pay-info-name {
+  width: 30%;
 }
 
-.basket-item-pay-info-quantity{
-    width: 20%;
+.basket-item-pay-info-quantity {
+  width: 20%;
 }
 
-.basket-item-pay-info-quantity-input{
-    max-width: 50%;
+.basket-item-pay-info-quantity-input {
+  margin: 0 4px;
+  padding: 2px;
+  max-width: 50%;
 }
 
-.basket-item-pay-info-price{
-    width: 15%;
-    font-weight: bold;
+.basket-item-quantity{
+    margin: 4px;
+}
+
+.basket-item-pay-info-price {
+  width: 15%;
+  font-weight: bold;
 }
 
 .basket-item-pay-info .icon {
-    width: 2em;
-    height: 2em;
-    cursor: pointer;
+  width: 2em;
+  height: 2em;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.basket-item-pay-info .icon:hover{
+  color:rgb(227, 32, 32)
 }
 
 @media (max-width: 767px) {
   .basket-item-pay-info {
-    font-size: var(--primary-size); 
+    font-size: var(--primary-size);
     display: flex;
     align-items: center;
   }
 
   .basket-item-pay-link {
-    width: 20%; 
+    width: 20%;
   }
 
   .basket-item-pay-info-image {
-    width: 100%;
+    width: 50%;
     border: 1px solid black;
   }
 
   .basket-item-pay-info-name {
-    margin-left: 0.5em;
-    width: 30%; 
+    margin-left: 6px;
+    width: 30%;
   }
 
   .basket-item-pay-info-quantity {
-    width: 20%; 
+    width: 20%;
   }
 
   .basket-item-pay-info-quantity-input {
-    max-width: 60%; 
+    max-width: 60%;
   }
 
   .basket-item-pay-info-price {
@@ -73,8 +84,8 @@
   }
 
   .basket-item-pay-info .icon {
-    width: 1.2em; 
-    height: 1.2em; 
+    width: 1.2em;
+    height: 1.2em;
     cursor: pointer;
   }
 }
@@ -94,18 +105,17 @@
   }
 
   .basket-item-pay-info-name {
-    width: 40%; 
+    width: 40%;
   }
 
   .basket-item-pay-info-quantity {
     width: 20%;
-
   }
 
   .basket-item-pay-info-quantity-input {
-    max-width: 70%; 
-    height: 2em;
-    font-size: var(--secondary-size); 
+    max-width: 70%;
+    height: 24px;
+    font-size: var(--secondary-size);
   }
 
   .basket-item-pay-info-price {
@@ -114,8 +124,8 @@
   }
 
   .basket-item-pay-info .icon {
-    width: 2.5em; 
-    height: 2.5em; 
+    width: 30px;
+    height: 30px;
     cursor: pointer;
   }
 }

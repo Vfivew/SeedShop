@@ -1,0 +1,37 @@
+.modal-content {
+  margin: 12px;
+  background: var(--gradient);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items:center
+}
+
+.modal-content h3 {
+  margin-top: 0;
+}
+
+.modal-button {
+    width: 160px;
+  font-size: var(--primary-size);
+  margin-top: 6px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background: var(--gradienteffect);
+  color: var(--secondary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  cursor: pointer;
+  background-size: 170%;
+  transition: 0.3s;
+}
+
+.modal-button:hover,
+.modal-button:focus {
+  background-position: 100%;
+  filter: saturate(2);
+}

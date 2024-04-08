@@ -10,45 +10,52 @@
   width: 9em;
   height: 2.5em;
   border: 1px solid var(--secondary-color);
-  background:var(--gradient);
+  background: var(--gradient);
   margin: 0 10px;
   cursor: pointer;
-  border-radius:55px;
+  border-radius: 55px;
+  transition: 0.3s;
+  background-size: 170%;
 }
 
 .sort-buttons button:hover,
-.sort-buttons button:focus{
-  background:var(--gradienteffect);
+.sort-buttons button:focus {
+  background-position: 100%;
+  filter: saturate(2);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
 }
 
 .sort-buttons button.active {
-  color: rgb(0, 0, 0);
-  background-color:var(--primary-color);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  background-color: var(--primary-color);
 }
 
 .main-product {
-    background-color:var(--fourth-color);
+  background-color: var(--fourth-color);
 }
+
 .product-list {
   display: flex;
-  justify-content: center; 
-  align-items: center; 
-  flex-wrap: wrap; 
-  gap: 20px; 
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .product-card {
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
   padding: 2em;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 767px) {
   .sort-buttons button {
-  font-size: 10px;
+    font-size: 10px;
   }
 }

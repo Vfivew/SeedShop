@@ -1,26 +1,29 @@
-import React, { useState } from 'react';
-import { useProduct } from '../../context/contexts';
-import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../../reducers/basketReducer';
-import { openBasket, closeBasket } from '../../reducers/basketReducer';
-import Tabs from '../Tabs/Tabs';
-import Basket from '../Basket/Basket';
+import { useProduct } from "../../context/contexts";
+import { addToCart } from "../../reducers/basketReducer";
+import { openBasket, closeBasket } from "../../reducers/basketReducer";
+import { useState, useDispatch, useSelector } from "../../hook/hooks";
+import Tabs from "../Tabs/Tabs";
+import Basket from "../Basket/Basket";
 
-import './ProductDetails.css';
+import "./ProductDetails.css";
 
 function ProductDetails() {
   const dispatch = useDispatch();
   const { selectedProduct } = useProduct();
   const [quantity, setQuantity] = useState(0);
-  const isBasketOpen = useSelector(state => state.basket.isBasketOpen);
+  const isBasketOpen = useSelector((state) => state.basket.isBasketOpen);
 
-  const availabilityText = selectedProduct.quantityAvailable > 0 ? 'В наявності' : 'Немає в наявності';
-  const availabilityStyle = selectedProduct.quantityAvailable > 0 ? { color: 'green' } : { color: 'red' };
+  const availabilityText =
+    selectedProduct.quantityAvailable > 0 ? "В наявності" : "Немає в наявності";
+  const availabilityStyle =
+    selectedProduct.quantityAvailable > 0
+      ? { color: "green" }
+      : { color: "red" };
 
   const tabsData = [
-    { id: 1, title: 'Доставка', content: 'Опис розділу "Контакти"' },
-    { id: 2, title: 'Оплата', content: 'Опис розділу "Оплата"' },
-    { id: 3, title: 'Гарантія', content: 'Опис розділу "Гарантія"' },
+    { id: 1, title: "Доставка", content: 'Опис розділу "Контакти"' },
+    { id: 2, title: "Оплата", content: 'Опис розділу "Оплата"' },
+    { id: 3, title: "Гарантія", content: 'Опис розділу "Гарантія"' },
   ];
 
   const handleIncrease = () => {
@@ -39,7 +42,7 @@ function ProductDetails() {
     const newQuantity = parseInt(event.target.value, 10);
     if (!isNaN(newQuantity) && newQuantity >= 0 && newQuantity < 100001) {
       setQuantity(newQuantity);
-    } else if (event.target.value === '') {
+    } else if (event.target.value === "") {
       setQuantity(0);
     }
   };
@@ -58,15 +61,26 @@ function ProductDetails() {
   return (
     <div className="select-product-details">
       <div className="select-product-details-image-block">
-        <img className="select-product-details-image" src={selectedProduct.image} alt={selectedProduct.name} />
+        <img
+          className="select-product-details-image"
+          src={selectedProduct.image}
+          alt={selectedProduct.name}
+        />
       </div>
       <div className="select-product-details-info">
         <div className="select-product-details-head">
           <h2>{selectedProduct.name}</h2>
-          <p className="select-product-details-head-price">Ціна: {selectedProduct.price}</p>
-          <p className="product-availability" style={availabilityStyle}>{availabilityText}</p>
+          <p className="select-product-details-head-price">
+            Ціна: {selectedProduct.price}
+          </p>
+          <p className="product-availability" style={availabilityStyle}>
+            {availabilityText}
+          </p>
           <div className="select-product-details-button-block">
-            <button className="select-product-details-combined-button" onClick={handleDecrease}>
+            <button
+              className="select-product-details-combined-button"
+              onClick={handleDecrease}
+            >
               -
             </button>
             <input
@@ -77,7 +91,10 @@ function ProductDetails() {
               value={quantity}
               onChange={handleQuantityChange}
             />
-            <button className="select-product-details-combined-button" onClick={handleIncrease}>
+            <button
+              className="select-product-details-combined-button"
+              onClick={handleIncrease}
+            >
               +
             </button>
             <button
@@ -86,7 +103,11 @@ function ProductDetails() {
               disabled={selectedProduct.quantityAvailable <= 0}
               style={
                 selectedProduct.quantityAvailable <= 0
-                  ? { backgroundColor: 'lightgray', color: 'gray', cursor: 'not-allowed' }
+                  ? {
+                      backgroundColor: "lightgray",
+                      color: "gray",
+                      cursor: "not-allowed",
+                    }
                   : {}
               }
             >

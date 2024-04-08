@@ -1,7 +1,6 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "../../hook/hooks";
 
-import './ScrollTop.css'
+import "./ScrollTop.css";
 
 const ScrollToTop = () => {
   const [showTopBtn, setShowTopBtn] = useState(false);
@@ -9,38 +8,37 @@ const ScrollToTop = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
-          setShowTopBtn(true);
-        } else {
-          setShowTopBtn(false);
+        setShowTopBtn(true);
+      } else {
+        setShowTopBtn(false);
       }
-  };
+    };
 
-    const debouncedHandleScroll = debounce(handleScroll, 500); 
+    const debouncedHandleScroll = debounce(handleScroll, 500);
 
     window.addEventListener("scroll", debouncedHandleScroll);
 
     return () => {
-        window.removeEventListener("scroll", debouncedHandleScroll);
-      };
-    }, []);
-
-    const goToTop = () => {
-        console.log('effectdadada')
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      window.removeEventListener("scroll", debouncedHandleScroll);
     };
+  }, []);
 
-function debounce(func, delay) {
-  let timerId;
-  return function (...args) {
-    clearTimeout(timerId);
-    timerId = setTimeout(() => func.apply(this, args), delay);
+  const goToTop = () => {
+    console.log("effectdadada");
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
-}
 
-    
+  function debounce(func, delay) {
+    let timerId;
+    return function (...args) {
+      clearTimeout(timerId);
+      timerId = setTimeout(() => func.apply(this, args), delay);
+    };
+  }
+
   return (
     <div className="top-to-btm">
       {showTopBtn && (
@@ -51,6 +49,5 @@ function debounce(func, delay) {
     </div>
   );
 };
-
 
 export default ScrollToTop;

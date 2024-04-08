@@ -1,36 +1,47 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Controller, useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
-import { setDeliveryMethod, setIsOrderPlaced } from '../../reducers/formReducer'; 
-import BasketItem from '../Basket/BasketItem/BasketItem';
+import { Controller, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
-import './Form.css';
+import {
+  setDeliveryMethod,
+  setIsOrderPlaced,
+} from "../../reducers/formReducer";
+import { useSelector, useDispatch } from "../../hook/hooks";
+import BasketItem from "../Basket/BasketItem/BasketItem";
+import Modal from "./Modal/Modal";
+
+import "./Form.css";
 
 const Form = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { handleSubmit, control, formState: { errors, isValid } } = useForm({ mode: 'onBlur' });
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+    trigger,
+  } = useForm({ mode: "onBlur" });
 
-  const cartItems = useSelector(state => state.basket.cartItems);
-  const { deliveryMethod, isOrderPlaced } = useSelector(state => state.form); 
+  const cartItems = useSelector((state) => state.basket.cartItems);
+  const { deliveryMethod, isOrderPlaced } = useSelector((state) => state.form);
 
-  const onSubmit = (data) => {
-    console.log(data);
-    dispatch(setIsOrderPlaced(true));
+  const onSubmit = async () => {
+    const isValidForm = await trigger();
+    if (isValidForm) {
+      dispatch(setIsOrderPlaced(true));
+    }
   };
 
   const closeModal = () => {
     dispatch(setIsOrderPlaced(false));
-    navigate('/');
-    localStorage.removeItem('isOrderPlaced');
-    localStorage.removeItem('cartItems');
+    navigate("/");
+    localStorage.removeItem("isOrderPlaced");
+    localStorage.removeItem("cartItems");
     window.location.reload();
   };
 
   return (
-    <div className='form'>
-      <div className='form-block'>
+    <div className="form">
+      <div className="form-block">
         <h2>Оформити замовлення</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
@@ -39,16 +50,18 @@ const Form = () => {
               name="firstName"
               control={control}
               rules={{
-                required: 'Це поле обов\'язкове',
+                required: "Це поле обов'язкове",
                 pattern: {
                   value: /^[А-ЯЁа-яёІіЇїЄєҐґ]+$/,
-                  message: 'Введіть правильне ім\'я'
-                }
+                  message: "Введіть правильне ім'я",
+                },
               }}
-              defaultValue="" 
+              defaultValue=""
               render={({ field }) => <input {...field} />}
             />
-            {errors.firstName && <p className="error-message">{errors.firstName.message}</p>}
+            {errors.firstName && (
+              <p className="error-message">{errors.firstName.message}</p>
+            )}
           </div>
           <div>
             <label>Фамілія</label>
@@ -56,16 +69,18 @@ const Form = () => {
               name="lastName"
               control={control}
               rules={{
-                required: 'Це поле обов\'язкове',
+                required: "Це поле обов'язкове",
                 pattern: {
                   value: /^[А-ЯЁа-яёІіЇїЄєҐґ]+$/,
-                  message: 'Введіть правильну фамілію'
-                }
+                  message: "Введіть правильну фамілію",
+                },
               }}
-              defaultValue="" 
+              defaultValue=""
               render={({ field }) => <input {...field} />}
             />
-            {errors.lastName && <p className="error-message">{errors.lastName.message}</p>}
+            {errors.lastName && (
+              <p className="error-message">{errors.lastName.message}</p>
+            )}
           </div>
           <div>
             <label>Номер телефону</label>
@@ -73,16 +88,19 @@ const Form = () => {
               name="phoneNumber"
               control={control}
               rules={{
-                required: 'Це поле обов\'язкове',
+                required: "Це поле обов'язкове",
                 pattern: {
                   value: /^\+380\d{9}$/,
-                  message: 'Введіть правильний номер телефону. (Формат: "+380998765432")'
-                }
+                  message:
+                    'Введіть правильний номер телефону. (Формат: "+380998765432")',
+                },
               }}
-              defaultValue="" 
+              defaultValue=""
               render={({ field }) => <input {...field} />}
             />
-            {errors.phoneNumber && <p className="error-message">{errors.phoneNumber.message}</p>}
+            {errors.phoneNumber && (
+              <p className="error-message">{errors.phoneNumber.message}</p>
+            )}
           </div>
           <div>
             <label>Місто</label>
@@ -90,16 +108,18 @@ const Form = () => {
               name="city"
               control={control}
               rules={{
-              required: 'Це поле обов\'язкове',
+                required: "Це поле обов'язкове",
                 pattern: {
-                value: /^[А-ЯЁа-яёІіЇїЄєҐґ]+$/,
-                message: 'Введіть правильну назву міста'
-                }
+                  value: /^[А-ЯЁа-яёІіЇїЄєҐґ]+$/,
+                  message: "Введіть правильну назву міста",
+                },
               }}
-              defaultValue="" 
+              defaultValue=""
               render={({ field }) => <input {...field} />}
             />
-            {errors.city && <p className="error-message">{errors.city.message}</p>}
+            {errors.city && (
+              <p className="error-message">{errors.city.message}</p>
+            )}
           </div>
           <div>
             <label>Доставка</label>
@@ -107,68 +127,79 @@ const Form = () => {
               name="delivery"
               control={control}
               render={({ field }) => (
-                <select {...field} onChange={(e) => setDeliveryMethod(e.target.value)}>
+                <select
+                  {...field}
+                  onChange={(e) => setDeliveryMethod(e.target.value)}
+                >
                   <option value="pickup">Самовивіз</option>
                   <option value="novaPoshta">Нова Пошта</option>
                   <option value="courier">Кур\'єром по місту</option>
                 </select>
               )}
             />
-            {errors.delivery && <p className="error-message">{errors.delivery.message}</p>}
+            {errors.delivery && (
+              <p className="error-message">{errors.delivery.message}</p>
+            )}
           </div>
-          {deliveryMethod === 'novaPoshta' && (
+          {deliveryMethod === "novaPoshta" && (
             <div>
               <label>Вкажіть пункт видачі</label>
               <Controller
                 name="novaPoshtaPoint"
                 control={control}
-                rules={{ required: 'Це поле обов\'язкове' }}
+                rules={{ required: "Це поле обов'язкове" }}
                 render={({ field }) => <input {...field} />}
-                defaultValue="" 
+                defaultValue=""
               />
-              {errors.novaPoshtaPoint && <p className="error-message">{errors.novaPoshtaPoint.message}</p>}
+              {errors.novaPoshtaPoint && (
+                <p className="error-message">
+                  {errors.novaPoshtaPoint.message}
+                </p>
+              )}
             </div>
           )}
-          {deliveryMethod === 'courier' && (
+          {deliveryMethod === "courier" && (
             <div>
               <label>Адрес доставки</label>
               <Controller
                 name="deliveryAddress"
                 control={control}
-                rules={{ required: 'Це поле обов\'язкове' }}
+                rules={{ required: "Це поле обов'язкове" }}
                 render={({ field }) => <input {...field} />}
-                defaultValue="" 
+                defaultValue=""
               />
-              {errors.deliveryAddress && <p className="error-message">{errors.deliveryAddress.message}</p>}
+              {errors.deliveryAddress && (
+                <p className="error-message">
+                  {errors.deliveryAddress.message}
+                </p>
+              )}
             </div>
           )}
-          <div>
-            <button className='button-sumbit' type="submit" disabled={!isValid || cartItems.length === 0}>Відправити</button>
-          </div>
+
+          <button
+            className="button-sumbit"
+            type="submit"
+          >
+            Відправити
+          </button>
         </form>
       </div>
-      <div className='form-basket-items'>
-        <ul className='form-basket-items-list'>
-    {cartItems.length === 0 ? (
-      <p className='form-basket-item-message'>Ви не обрали жодного товару...</p>
-    ) : (
-      cartItems.map((item, index) => (
-      <li key={index}>
-        <BasketItem item={item} product={item.product} />
-      </li>
-      ))
-    )}
-  </ul>
+      <div className="form-basket-items">
+        <ul className="form-basket-items-list">
+          {cartItems.length === 0 ? (
+            <p className="form-basket-item-message">
+              Ви не обрали жодного товару...
+            </p>
+          ) : (
+            cartItems.map((item, index) => (
+              <li key={index}>
+                <BasketItem item={item} product={item.product} />
+              </li>
+            ))
+          )}
+        </ul>
       </div>
-      {isOrderPlaced && (
-          <div className="modal">
-            <div className="modal-content">
-              <h3>Дякуємо за замовлення</h3>
-              <p>Наш оператор скоро з вами зв'яжеться</p>
-              <button onClick={closeModal}>На головну</button>
-            </div>
-          </div>
-        )}
+      {isOrderPlaced && <Modal onClose={closeModal} />}
     </div>
   );
 };

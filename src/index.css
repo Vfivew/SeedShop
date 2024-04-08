@@ -1,75 +1,86 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-html, body {
+html,
+body {
   height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont,'Roboto','Arial' 'Segoe UI', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Arial" "Segoe UI",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#root{
+#root {
   --primary-color: #5b9f33;
   --secondary-color: #000000;
-  --thirty-color:#ffffff;
-  --fourth-color:#dcdcdc;
-  --primary-font: 'Roboto', sans-serif;
-  --secondary-font: 'Satisfy', cursive;
-  --primary-size:16px;
+  --thirty-color: #ffffff;
+  --fourth-color: #dcdcdc;
+  --primary-font: "Roboto", sans-serif;
+  --secondary-font: "Satisfy", cursive;
+  --primary-size: 16px;
   --secondary-size: 20px;
   --thirty-size: 48px;
   --fourth-size: 60px;
-  --gradient: -webkit-linear-gradient(45deg, rgb(179, 210, 167), rgb(255, 255, 255) 50%, rgb(137, 167, 140) 100%);
-  --gradienteffect: -webkit-linear-gradient(315deg, rgb(179, 210, 167) 40%, rgb(255, 255, 255) 50%, rgb(137, 167, 140) 60%);
-  font-family:'Roboto', sans-serif ;
+  --gradient: -webkit-linear-gradient(
+    45deg,
+    rgb(179, 210, 167),
+    rgb(255, 255, 255) 50%,
+    rgb(137, 167, 140) 100%
+  );
+  --gradienteffect: -webkit-linear-gradient(
+    315deg,
+    rgb(179, 210, 167) 40%,
+    rgb(255, 255, 255) 50%,
+    rgb(137, 167, 140) 60%
+  );
+  font-family: "Roboto", sans-serif;
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color:var(--fourth-color)
+  background-color: var(--fourth-color);
 }
-main{
-  flex:1 0 auto;
-  background-color:var(--fourth-color);
+main {
+  flex: 1 0 auto;
+  background-color: var(--fourth-color);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-  monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 @media (min-width: 1980px) {
-  #root{
-  --primary-size:24px;
-  --secondary-size: 32px;
-  --thirty-size: 60px;
-  --fourth-size: 80px;
-}
+  #root {
+    --primary-size: 24px;
+    --secondary-size: 32px;
+    --thirty-size: 60px;
+    --fourth-size: 80px;
+  }
 }
 
 @media (max-width: 767px) {
-  #root{
-  --primary-size:10px;
-  --secondary-size: 14px;
-  --thirty-size: 18px;
-  --fourth-size: 24px;
-}
+  #root {
+    --primary-size: 10px;
+    --secondary-size: 14px;
+    --thirty-size: 18px;
+    --fourth-size: 24px;
+  }
 }

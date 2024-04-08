@@ -1,11 +1,10 @@
-const ADD_TO_CART = 'ADD_TO_CART';
-const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
-const UPDATE_QUANTITY_IN_CART = 'UPDATE_QUANTITY_IN_CART';
-const OPEN_BASKET = 'OPEN_BASKET';
-const CLOSE_BASKET = 'CLOSE_BASKET';
+const ADD_TO_CART = "ADD_TO_CART";
+const REMOVE_FROM_CART = "REMOVE_FROM_CART";
+const UPDATE_QUANTITY_IN_CART = "UPDATE_QUANTITY_IN_CART";
+const OPEN_BASKET = "OPEN_BASKET";
+const CLOSE_BASKET = "CLOSE_BASKET";
 
-
-const initialCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+const initialCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
 const initialState = {
   cartItems: initialCartItems,
@@ -19,15 +18,17 @@ const basketReducer = (state = initialState, action) => {
         quantity: action.payload.quantity,
         totalPrice: action.payload.product.price * action.payload.quantity,
       };
-    
-      const existingItemIndex = state.cartItems.findIndex(item => item.product.id === newItem.product.id);
+
+      const existingItemIndex = state.cartItems.findIndex(
+        (item) => item.product.id === newItem.product.id
+      );
 
       if (existingItemIndex !== -1) {
         const updatedCart = [...state.cartItems];
         updatedCart[existingItemIndex].quantity += newItem.quantity;
         updatedCart[existingItemIndex].totalPrice += newItem.totalPrice;
 
-        localStorage.setItem('cartItems', JSON.stringify(updatedCart));
+        localStorage.setItem("cartItems", JSON.stringify(updatedCart));
 
         return {
           ...state,
@@ -36,7 +37,7 @@ const basketReducer = (state = initialState, action) => {
       } else {
         const updatedCart = [...state.cartItems, newItem];
 
-        localStorage.setItem('cartItems', JSON.stringify(updatedCart));
+        localStorage.setItem("cartItems", JSON.stringify(updatedCart));
 
         return {
           ...state,
@@ -45,9 +46,11 @@ const basketReducer = (state = initialState, action) => {
       }
 
     case REMOVE_FROM_CART:
-      const updatedCartAfterRemove = state.cartItems.filter(item => item.product !== action.payload.product);
+      const updatedCartAfterRemove = state.cartItems.filter(
+        (item) => item.product !== action.payload.product
+      );
 
-      localStorage.setItem('cartItems', JSON.stringify(updatedCartAfterRemove));
+      localStorage.setItem("cartItems", JSON.stringify(updatedCartAfterRemove));
 
       return {
         ...state,
@@ -55,18 +58,25 @@ const basketReducer = (state = initialState, action) => {
       };
 
     case UPDATE_QUANTITY_IN_CART:
-      const updatedCartWithUpdatedQuantity = state.cartItems.map(item =>
+      const updatedCartWithUpdatedQuantity = state.cartItems.map((item) =>
         item.product === action.payload.product
-          ? { ...item, quantity: action.payload.quantity, totalPrice: item.product.price * action.payload.quantity }
+          ? {
+              ...item,
+              quantity: action.payload.quantity,
+              totalPrice: item.product.price * action.payload.quantity,
+            }
           : item
       );
 
-      localStorage.setItem('cartItems', JSON.stringify(updatedCartWithUpdatedQuantity));
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify(updatedCartWithUpdatedQuantity)
+      );
 
       return {
         ...state,
         cartItems: updatedCartWithUpdatedQuantity,
-    };
+      };
 
     case OPEN_BASKET:
       return {

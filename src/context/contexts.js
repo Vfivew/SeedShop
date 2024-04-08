@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import useFetchData from '../hook/useFetchData';
+import { createContext, useContext } from 'react';
+import { useFetchData } from "../hook/hooks";
+import {useState, useEffect} from "../hook/hooks"
 import Spinner from "../components/Spinner/Spinner"
 
 const ProductContext = createContext();
