@@ -6,7 +6,7 @@ import {
   toggleFilterNew,
   toggleFilterDiscount,
   setSeedProducerFilter,
-} from "../../reducers/seedProductReducer";
+} from "../../reducers/SeedProductReducer";
 
 import "./Filters.css";
 

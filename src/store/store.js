@@ -5,7 +5,7 @@ import productsReducer from "../reducers/productsReducer";
 import basketReducer from "../reducers/basketReducer";
 import paginationReducer from "../reducers/paginationReducer";
 import formReducer from "../reducers/formReducer";
-import seedProductReducer from "../reducers/seedProductReducer";
+import seedProductReducer from "../reducers/SeedProductReducer";
 
 const rootReducer = combineReducers({
   products: productsReducer,

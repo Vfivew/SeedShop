@@ -5,7 +5,7 @@ import {
   setSeedSort,
   resetSeedFilters,
   setCurrentFilters,
-} from "../../reducers/seedProductReducer";
+} from "../../reducers/SeedProductReducer";
 import { useProduct } from "../../context/contexts";
 import { setCurrentPage } from "../../reducers/paginationReducer";
 import ProductCard from "../Cards/ProductCards";

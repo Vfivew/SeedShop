@@ -2,7 +2,7 @@ import { useNavigate, NavLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
 import { useSelector, useDispatch, useState } from "../../hook/hooks";
-import { setSeedFilters } from "../../reducers/seedProductReducer";
+import { setSeedFilters } from "../../reducers/SeedProductReducer";
 import { useProduct } from "../../context/contexts";
 import { openBasket, closeBasket } from "../../reducers/basketReducer";
 import Basket from "../Basket/Basket";
