@@ -2,7 +2,7 @@
   font-family: var(--primary-font);
   font-size: var(--primary-size);
   width: 100%;
-  min-height: 6%;
+  min-height: 50px;
   background-color: var(--primary-color);
   display: flex;
   align-items: center;
@@ -29,6 +29,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 0.3s;
 }
 
 .nav_list_link:hover,
@@ -44,7 +45,7 @@
   cursor: pointer;
   text-align: center;
   text-decoration: none;
-  padding: 0.5rem 1rem;
+  padding: 12px 6px;
   border-radius: 4px;
   transition: background-color 0.3s, color 0.3s;
 }
@@ -59,7 +60,7 @@
 }
 
 .icon {
-  font-size: 1.5rem;
+  font-size: 16px;
 }
 
 .menu-open {
@@ -68,13 +69,12 @@
 
 @media (max-width: 767px) {
   .Navbar {
-    min-height: 8%;
     position: relative;
     flex-direction: row-reverse;
   }
 
   .Navbar > .nav-list {
-    height: 30vh;
+    height: auto;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -104,7 +104,7 @@
   .nav_list_link {
     width: 100%;
     text-align: center;
-    padding: 0.5rem 0;
+    padding: 6px 0;
     color: var(--thirty-color);
     text-decoration: none;
   }
@@ -117,7 +117,7 @@
     cursor: pointer;
     text-align: center;
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 6px 12px;
     border-radius: 4px;
     transition: background-color 0.3s, color 0.3s;
   }
@@ -125,15 +125,15 @@
   .button-style:hover {
     background-color: #7dbd57;
   }
-  
+
   .icon {
     margin: 0.3em;
   }
 }
 
-@media (min-width: 1980px){
+@media (min-width: 1980px) {
   .Navbar {
-  min-height: 5%;
-  font-size: var(--secondary-size);
-}
+    min-height: 5%;
+    font-size: var(--secondary-size);
+  }
 }

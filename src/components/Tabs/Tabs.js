@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from "../../hook/hooks";
 
-import './Tabs.css';
+import "./Tabs.css";
 
 const Tabs = ({ tabsData, activeTabId }) => {
-
   const [activeTab, setActiveTab] = useState(
-    tabsData.find(tab => tab.id === activeTabId) || tabsData[0]
+    tabsData.find((tab) => tab.id === activeTabId) || tabsData[0]
   );
 
   useEffect(() => {
-    const tabToUpdate = tabsData.find(tab => tab.id === activeTabId);
+    const tabToUpdate = tabsData.find((tab) => tab.id === activeTabId);
     if (tabToUpdate) {
       setActiveTab(tabToUpdate);
     }
-  }, [activeTabId,tabsData]);/// tabsData можно видалити
+  }, [activeTabId, tabsData]);
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -25,7 +24,7 @@ const Tabs = ({ tabsData, activeTabId }) => {
         {tabsData.map((tab) => (
           <div
             key={tab.id}
-            className={`tab ${activeTab.id === tab.id ? 'active' : ''}`}
+            className={`tab ${activeTab.id === tab.id && "active"}`}
             onClick={() => handleTabClick(tab)}
           >
             {tab.title}

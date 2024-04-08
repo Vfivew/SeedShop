@@ -2,76 +2,80 @@
   display: flex;
   justify-content: space-between;
   font-family: var(--primary-font);
-  background-color: var(--fourth-color)
+  background-color: var(--fourth-color);
 }
 
 .form-block {
-    width: 50%;
-    background:var(--gradient);
-    border:1px solid black;
-    border-radius:1em;
-    margin: 1em 1em 1em 1em;
-    padding: 1em; 
+  width: 50%;
+  background: var(--gradient);
+  border: 1px solid black;
+  border-radius: 20px;
+  margin:12px;
+  padding: 12px;
 }
 
 .form-block label {
-    display: block;
-    margin-bottom: 0.5em; 
+  display: block;
+  margin-bottom: 6px;
 }
 
 .form-block input,
 .form-block select {
-    width: 100%;
-    padding: 0.5em;
-    margin-bottom: 1em; 
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    outline: none;
-    transition: border-color 0.3s; 
+  width: 100%;
+  padding:6px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s;
 }
 
 .form-block input:focus,
 .form-block select:focus {
-    border-color: var(--primary-color); 
+  border-color: var(--primary-color);
 }
 
 .form-basket-items {
-    width: 50%;
+  width: 50%;
 }
 
 .form-basket-items-list {
-    width: 95%;
-    margin: 1em 0 1em 1em;
-    padding: 0.3em 0 0.3em 0;
-    background:var(--gradient);
-    list-style: none;
-    border:1px solid black;
-    border-radius:1em;
+  width: 95%;
+  margin: 12px 0 12px 12px;
+  padding: 0.3em 0 0.3em 0;
+  background: var(--gradient);
+  list-style: none;
+  border: 1px solid black;
+  border-radius: 12px;
 }
 
-.error-message{
-    color:red;
+.error-message {
+  color: red;
 }
 
-.form-basket-item-message{
-  padding: 1em;
+.form-basket-item-message {
+  padding: 12px;
   font-weight: bold;
 }
 
-.button-sumbit{
+.button-sumbit {
   font-size: var(--primary-size);
   font-weight: bold;
-  background:var(--gradient);
-  color: var(--primary-color);
-  border: 1px solid var(--primary-color);
-  border-radius:5em;
-  padding: 0.5em;
+  background: var(--gradient);
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+  border-radius: 50px;
+  padding: 6px;
+  transition: 0.3s;
+  background-size: 170%;
+  cursor: pointer;
+  margin: 12px 0;
 }
 
 .button-sumbit:hover,
-.button-sumbit:focus{
-  background:var(--gradienteffect);
-  color: var(--secondary-color);
+.button-sumbit:focus {
+  background-position: 100%;
+  filter: saturate(2);
   border: 1px solid var(--primary-color);
 }
 
@@ -81,89 +85,62 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); 
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 10;
 }
 
-.modal-content {
-  margin: 1em;
-  background:var(--gradient);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.modal-content h3 {
-  margin-top: 0;
-}
-
-.modal-content button {
-  margin-top: 0.5em;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: var(--primary-color);
-  color: white;
-  border:1px solid var(--primary-color);
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.modal-content button:hover {
-  background:var(--gradienteffect);
-  color:var(--secondary-color);
-  border:1px solid var(--primary-color);
-}
-
-label{
-  margin-top: 0.5em;
+label {
+  margin-top: 6px;
 }
 
 .form li {
-  background-color:var(--thirty-color);
+  background-color: var(--thirty-color);
   border: 1px solid var(--primary-color);
-  margin: 1em ;
+  margin: 12px;
   padding-bottom: 0;
 }
 
-@media (max-width: 767px) { 
+@media (max-width: 767px) {
   .form-block input,
   .form-block select {
-    width: 100%; 
-    padding: 0.5em;
-    margin-bottom: 0.3em; 
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 3px;
   }
 
   .form {
     flex-direction: column;
     justify-content: space-between;
-
   }
 
   .form-block {
-    width: 90%;
-    margin: 1em;
+    width: auto;
+    margin: 12px;
   }
 
   .form-basket-items {
-    width: 95%;
+    width: auto;
+  }
+
+  .button-sumbit {
+    margin-top: 10px;
   }
 }
 
 @media (min-width: 1980px) {
   .form-block input,
   .form-block select {
-    font-size: var(--secondary-size); 
+    font-size: var(--secondary-size);
   }
 
   .form-block label {
-    font-size: var(--secondary-size); 
+    font-size: var(--secondary-size);
   }
 
   .form-block button {
-    font-size: var(--secondary-size); 
+    font-size: var(--secondary-size);
   }
 }

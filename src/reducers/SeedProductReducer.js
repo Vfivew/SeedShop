@@ -3,20 +3,20 @@ const initialState = {
     hit: false,
     new: false,
     discount: false,
-    selectedProducer: '',
-    selectedProductTypes: []
+    selectedProducer: "",
+    selectedProductTypes: [],
   },
-  sortBy: '', 
+  sortBy: "",
 };
 
-const SET_SEED_FILTERS = 'SET_SEED_FILTERS';
-const SET_SEED_PRODUCER_FILTER = 'SET_SEED_PRODUCER_FILTER';
-const SET_SEED_SORT = 'SET_SEED_SORT';
-const TOGGLE_FILTER_HIT = 'TOGGLE_FILTER_HIT';
-const TOGGLE_FILTER_NEW = 'TOGGLE_FILTER_NEW';
-const TOGGLE_FILTER_DISCOUNT = 'TOGGLE_FILTER_DISCOUNT';
-const RESET_SEED_FILTERS = 'RESET_SEED_FILTERS';
-const SET_CURRENT_FILTERS = 'SET_CURRENT_FILTERS';
+const SET_SEED_FILTERS = "SET_SEED_FILTERS";
+const SET_SEED_PRODUCER_FILTER = "SET_SEED_PRODUCER_FILTER";
+const SET_SEED_SORT = "SET_SEED_SORT";
+const TOGGLE_FILTER_HIT = "TOGGLE_FILTER_HIT";
+const TOGGLE_FILTER_NEW = "TOGGLE_FILTER_NEW";
+const TOGGLE_FILTER_DISCOUNT = "TOGGLE_FILTER_DISCOUNT";
+const RESET_SEED_FILTERS = "RESET_SEED_FILTERS";
+const SET_CURRENT_FILTERS = "SET_CURRENT_FILTERS";
 
 const seedProductReducer = (state = initialState, action) => {
   switch (action.type) {

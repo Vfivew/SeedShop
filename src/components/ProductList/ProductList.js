@@ -1,17 +1,17 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setSortBy } from '../../reducers/productsReducer';
-import { Link } from 'react-router-dom';
-import { useProduct } from '../../context/contexts'; 
-import ProductCard from '../Cards/ProductCards';
+import { Link } from "react-router-dom";
 
-import './ProductList.css';
+import { setSortBy } from "../../reducers/productsReducer";
+import { useDispatch, useSelector } from "../../hook/hooks";
+import { useProduct } from "../../context/contexts";
+import ProductCard from "../Cards/ProductCards";
+
+import "./ProductList.css";
 
 function ProductList() {
   const dispatch = useDispatch();
   const { products } = useProduct();
-  const sortBy = useSelector(state => state.products.sortBy);
-  const activeButton = useSelector(state => state.products.activeButton); 
+  const sortBy = useSelector((state) => state.products.sortBy);
+  const activeButton = useSelector((state) => state.products.activeButton);
 
   const { setSelectedProduct } = useProduct();
 
@@ -20,40 +20,46 @@ function ProductList() {
   };
 
   let sortedAndFilteredProducts = [...products];
-  if (sortBy === 'sold') {
-    sortedAndFilteredProducts = sortedAndFilteredProducts.filter(product => product.sold > 9);
+  if (sortBy === "sold") {
+    sortedAndFilteredProducts = sortedAndFilteredProducts.filter(
+      (product) => product.sold > 9
+    );
     sortedAndFilteredProducts.sort((a, b) => b.sold - a.sold);
-  } else if (sortBy === 'discount') {
-    sortedAndFilteredProducts = sortedAndFilteredProducts.filter(product => product.discount);
+  } else if (sortBy === "discount") {
+    sortedAndFilteredProducts = sortedAndFilteredProducts.filter(
+      (product) => product.discount
+    );
     sortedAndFilteredProducts.sort((a, b) => b.discount - a.discount);
-  } else if (sortBy === 'new') {
-    sortedAndFilteredProducts = sortedAndFilteredProducts.filter(product => product.new);
+  } else if (sortBy === "new") {
+    sortedAndFilteredProducts = sortedAndFilteredProducts.filter(
+      (product) => product.new
+    );
   }
 
   return (
-    <div className='main-product'>
+    <div className="main-product">
       <div className="sort-buttons">
         <button
-          className={activeButton === 'sold' ? 'active' : ''}
-          onClick={() => handleButtonClick('sold')}
+          className={activeButton === "sold" && "active"}
+          onClick={() => handleButtonClick("sold")}
         >
           Хіт продаж
         </button>
         <button
-          className={activeButton === 'new' ? 'active' : ''}
-          onClick={() => handleButtonClick('new')}
+          className={activeButton === "new" && "active"}
+          onClick={() => handleButtonClick("new")}
         >
           Новинки
         </button>
         <button
-          className={activeButton === 'discount' ? 'active' : ''}
-          onClick={() => handleButtonClick('discount')}
+          className={activeButton === "discount" && "active"}
+          onClick={() => handleButtonClick("discount")}
         >
           Знижки
         </button>
       </div>
       <div className="product-list">
-        {sortedAndFilteredProducts.map(product => (
+        {sortedAndFilteredProducts.map((product) => (
           <Link
             key={product.id}
             to={`/product/${product.id}`}
